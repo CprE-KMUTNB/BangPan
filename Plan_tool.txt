@@ -37,5 +37,5 @@ API				:	Django REST Framework
 เรียนรู้การใช้งาน Django Rest Framework with React.js
 -> https://stackpython.co/tutorial/django-rest-framework-with-reactjs-ep1
 
-Flask กับ Django ต่างกันอย่างไร
+Flask กับ Django ต่างกันอย่างไร 
 -> https://www.facebook.com/UncleEngineer/posts/1541211239385274/
