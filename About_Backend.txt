@@ -1,0 +1,5 @@
+Branch For Backend
+*******************************
+- Framwork : Django
+- Database : MySQL and MongoDB
+- Deploy   : Heroku
