@@ -1,4 +1,4 @@
-
+#pip install MySQL-python
 
 import mysql.connector
 import mysql.connector
