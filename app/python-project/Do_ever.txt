@@ -1,1 +1,2 @@
-ต้อง activate ทุกครั้ง
+ต้อง activate ทุกครั้ง ใน cmd
+"myproject\Scripts\activate.bat"
