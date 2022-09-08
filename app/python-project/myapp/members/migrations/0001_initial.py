@@ -22,8 +22,8 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
-
+"""
 CREATE TABLE "members_members"(
 "id" INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 "firstname" VARCHAR(255) NOT NULL,
-"lastname" VARCHAR(255) NOT NULL);
+"lastname" VARCHAR(255) NOT NULL);"""
