@@ -1,5 +1,6 @@
 from multiprocessing import context
 from re import template
+import re
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
@@ -33,4 +34,22 @@ def addrecord(request):
 def delete(request,id):
     member = Members.objects.get(id = id)
     member.delete()
+    return HttpResponseRedirect(reverse('index'))
+
+def update(request, id):
+    mymember = Members.objects.get(id = id)
+    template = loader.get_template("update.html")
+    context = {
+        'mymember': mymember
+    }
+    return HttpResponse(template.render(context,request))
+
+def updaterecord(request,id):
+
+    firstname = request.POST['first']
+    lastname = request.POST['last']
+    member = Members.objects.get(id=id)
+    member.firstname = firstname
+    member.lastname = lastname
+    member.save()
     return HttpResponseRedirect(reverse('index'))
