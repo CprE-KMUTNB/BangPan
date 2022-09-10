@@ -1,13 +1,19 @@
+from contextlib import redirect_stderr
 from multiprocessing import context
 from re import template
 import re
+from traceback import walk_stack
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
-
+from django.db import models
+from django.contrib.auth import authenticate
 import members
 from .models import Members
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm,AuthenticationForm
+from django.contrib.auth import login,logout
 
 # Create your views here.
 def index(request):
@@ -53,3 +59,6 @@ def updaterecord(request,id):
     member.lastname = lastname
     member.save()
     return HttpResponseRedirect(reverse('index'))
+
+def protected_page(request):
+    return render(request,'account/protected_page.html')

@@ -1,0 +1,2 @@
+ศึกษาการใช้ Django ทำระบบ login
+https://stackpython.co/tutorial/django-authentication-system-loginlogout

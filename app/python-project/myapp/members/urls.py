@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('delete/<int:id>',views.delete,name='delete'),
     path('update/<int:id>', views.update, name='update'),
     path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
+    path('protected-page/',views.protected_page,name="protected_page")
 ]
