@@ -8,5 +8,7 @@ urlpatterns = [
     path('delete/<int:id>',views.delete,name='delete'),
     path('update/<int:id>', views.update, name='update'),
     path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
-    path('protected-page/',views.protected_page,name="protected_page")
+    path('login/',views.login_view,name='login'),
+    path('logout/',views.logout_view,name='logout'),
+    path('signup/',views.signup_view,name='signup')
 ]
