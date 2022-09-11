@@ -7,17 +7,15 @@
     <title>Login</title>
 </head>
 <body>
-    {% load crispy_forms_tags %}
 
-    {% block content %}
     <div class="container">
         <h1>Login</h1>
-        <form method="post" novalidate>
+        <form method="post" action="login/" novalidate>
             {% csrf_token%}
-            {{ form|crispy }}
+            {{ form}}
             <button type="submit" class="btn btn-success">Login</button>
         </form>
     </div>
-    {% endblock %}
+
 </body>
 </html>
