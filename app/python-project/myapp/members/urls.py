@@ -1,5 +1,7 @@
 from django.urls import path, re_path
 from django.contrib.auth.decorators import login_required
+
+import blogs
 from . import views
 
 urlpatterns = [
@@ -12,5 +14,6 @@ urlpatterns = [
     path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
     path('login/',views.login_view,name='login'),
     path('logout/',views.logout_view,name='logout'),
-    path('signup/',views.signup_view,name='signup')
+    path('signup/',views.signup_view,name='signup'),
+
 ]
