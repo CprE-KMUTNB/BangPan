@@ -38,11 +38,13 @@ def addrecord(request):
     member.save()
     return HttpResponseRedirect(reverse('index'))
 
+@login_required(login_url='login')
 def delete(request,id):
     member = Members.objects.get(id = id)
     member.delete()
     return HttpResponseRedirect(reverse('index'))
-
+    
+@login_required(login_url='login')
 def update(request, id):
     mymember = Members.objects.get(id = id)
     template = loader.get_template("update.html")
