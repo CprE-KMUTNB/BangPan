@@ -35,7 +35,7 @@
 
 </head>
 <body>
-    <div id="wrapper">
+
         <header class="tech-header header">
             <div class="container-fluid">
                 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
@@ -68,6 +68,14 @@
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
         <section class="section first-section">
+            <div id="wrapper">
+                {% if user.is_authenticated %}
+                <span>Hello,{{request.user.username}}</span>
+                <form method="post" action="../../logout/" novalidate>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Log out</button>
+                </form>
+                {% endif %}
             <div class="container-fluid">
                 <div class="masonry-blog clearfix">
                     <div class="first-slot">
@@ -127,7 +135,8 @@
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-top clearfix">
-                                <h4 class="pull-left">บทความล่าสุด <a href="#"><i class="fa fa-rss"></i></a></h4>
+                                
+                                <h4 class="pull-left">คำขอรับบริจาคทั้งหมด <a href="#"><i class="fa fa-rss"></i></a></h4>
                             </div><!-- end blog-top -->
 
                             <div class="blog-list clearfix">
@@ -213,7 +222,7 @@
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
                             <div class="widget">
-                                <h2 class="widget-title">บทความทั้งหมด</h2>
+                                <h2 class="widget-title">คำขอรับบริจาคที่นิยม</h2>
                                 <div class="trend-videos">
                                     <div class="blog-box">
                                         <div class="post-media">
@@ -327,14 +336,12 @@
                     </div><!-- end col -->
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="widget">
-                            <h2 class="widget-title">Popular Categories</h2>
+                            <h2 class="widget-title">หมวดหมู่</h2>
                             <div class="link-widget">
                                 <ul>
-                                    <li><a href="#">Marketing <span>(21)</span></a></li>
-                                    <li><a href="#">SEO Service <span>(15)</span></a></li>
-                                    <li><a href="#">Digital Agency <span>(31)</span></a></li>
-                                    <li><a href="#">Make Money <span>(22)</span></a></li>
-                                    <li><a href="#">Blogging <span>(66)</span></a></li>
+                                    {% for category in categories %}
+                                    <li><a href="#">{{category.name}} <span>(0)</span></a></li>
+                                    {% endfor %}
                                 </ul>
                             </div><!-- end link-widget -->
                         </div><!-- end widget -->

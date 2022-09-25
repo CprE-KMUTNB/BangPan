@@ -1,0 +1,7 @@
+ใน cmd 
+django startproject .....		สร้าง project
+python manage.py startapp .....	สร้าง app ภายใน project
+
+
+python manage.py makemigrations 	สร้าง model สำหรับเตรียมอัปขึ้น database
+python manage.py migrate		เชื่องต่อ model กับ database
