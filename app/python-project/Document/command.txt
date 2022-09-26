@@ -4,4 +4,8 @@ python manage.py startapp .....	สร้าง app ภายใน project
 
 
 python manage.py makemigrations 	สร้าง model สำหรับเตรียมอัปขึ้น database
-python manage.py migrate		เชื่องต่อ model กับ database
+python manage.py migrate		เชื่อมต่อ model กับ database
+
+...
+26-9-2565
+เพิ่มตาราง Donation_blogs ใน mysql
