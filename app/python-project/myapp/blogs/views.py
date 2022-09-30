@@ -8,7 +8,9 @@ from .models import Donation_blogs
 def index(request):
     categories = Category.objects.all()
     blog = Donation_blogs.objects.all()
-    return render(request,"frontend/index.html",{'categories':categories,'blogs':blog})
+    #ให้เรียง primary key จากมากไปน้อย 
+    latests = Donation_blogs.objects.all().order_by('-pk')[:2]
+    return render(request,"frontend/index.html",{'categories':categories,'blogs':blog,'latests':latests})
 
 
    
