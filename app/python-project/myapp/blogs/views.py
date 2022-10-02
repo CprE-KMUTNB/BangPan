@@ -28,5 +28,9 @@ def index(request):
 
     return render(request,"frontend/index.html",{'categories':categories,'blogs':blogPrepage,'latests':latests})
 
+def blogDetail(request,id) :
+    singleBlog = Donation_blogs.objects.get(id=id)
 
+    return render(request,"frontend/blogDetail.html",{'Blog':singleBlog})
+    
    
