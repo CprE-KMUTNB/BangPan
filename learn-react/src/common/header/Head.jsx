@@ -6,7 +6,14 @@ const Head = () => {
         <section className='head'>
             <div className="container f_flex">
                 <div className="left row">
-                    <i className='fa fa-phone'></i>
+                    <i className='request'></i>
+                    <label>ขอรับบริจาค</label>
+                </div>
+                <div className="right row">
+                    <label>หน้าแรก</label>
+                    <label>เกี่ยวกับเรา</label>
+                    <label>เข้าสู่ระบบ</label>
+                    <label>สมัครสมาชิก</label>
                 </div>
             </div>
         </section>
