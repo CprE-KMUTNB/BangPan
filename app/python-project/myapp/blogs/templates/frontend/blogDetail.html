@@ -1,5 +1,5 @@
 {% extends "frontend/layout.html" %}
-
+{% load humanize %}
 {% block content %}
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -11,7 +11,7 @@
             <div class="blog-meta big-meta">
                 <small><a href="#" title="">{{Blog.created}}</a></small>
                 <small><a href="#" title="">{{Blog.write}}</a></small>
-                <small><a href="#" title=""><i class="fa fa-eye"></i> {{Blog.view}}</a></small>
+                <small><a href="#" title=""><i class="fa fa-eye"></i> {{Blog.views | intcomma}}</a></small>
             </div><!-- end meta -->
 
             <div class="post-sharing">

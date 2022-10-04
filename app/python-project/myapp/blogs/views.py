@@ -13,6 +13,12 @@ def index(request):
     #ให้เรียง primary key จากมากไปน้อย 
     latests = Donation_blogs.objects.all().order_by('-pk')[:2]
     
+    #บทความยอดนิยม
+    popular = Donation_blogs.objects.all().order_by('-views')[:3]
+    
+    #บทความแนะนำ 
+    suggestion = Donation_blogs.objects.all().order_by('views')[:3]
+    
     #pagination
     paginator = Paginator(blog,3)
     try:
@@ -26,11 +32,20 @@ def index(request):
         # ถ้าไม่มีหริอเกิน จะให้คืนหน้า : จำนวนบทความทั้งหมด/3 
         blogPrepage = paginator.page(paginator.num_pages)
 
-    return render(request,"frontend/index.html",{'categories':categories,'blogs':blogPrepage,'latests':latests})
+    return render(request,"frontend/index.html",{'categories':categories,'blogs':blogPrepage,'latests':latests,'popular':popular,'suggestion':suggestion})
 
 def blogDetail(request,id) :
-    singleBlog = Donation_blogs.objects.get(id=id)
 
-    return render(request,"frontend/blogDetail.html",{'Blog':singleBlog})
+    categories = Category.objects.all()
+    #ให้เรียง primary key จากมากไปน้อย 
+
+    #บทความยอดนิยม
+    popular = Donation_blogs.objects.all().order_by('-views')[:3]
+
+    #บทความแนะนำ 
+    suggestion = Donation_blogs.objects.all().order_by('views')[:3]
     
-   
+    singleBlog = Donation_blogs.objects.get(id=id)
+    singleBlog.views = singleBlog.views + 1
+    singleBlog.save()
+    return render(request,"frontend/blogDetail.html",{'categories':categories,'popular':popular,'Blog':singleBlog,'suggestion':suggestion})

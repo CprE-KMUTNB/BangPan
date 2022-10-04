@@ -1,5 +1,5 @@
 {% extends "frontend/layout.html" %}
-
+{% load humanize %}
 {% block content %}
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -27,7 +27,7 @@
                     <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">{{blog.category}}</a></small>
                     <small><a href="#" title="">{{blog.created}}</a></small>
                     <small><a href="tech-author.html" title="">{{blog.write}}</a></small>
-                    <small><a href="#" title=""><i class="fa fa-eye"></i> {{blog.view}}</a></small>
+                    <small><a href="#" title=""><i class="fa fa-eye"></i> {{blog.views | intcomma}}</a></small>
                 </div><!-- end meta -->
             </div><!-- end blog-box -->
             <br>

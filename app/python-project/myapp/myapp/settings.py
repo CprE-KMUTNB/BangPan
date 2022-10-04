@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'members.apps.MembersConfig',
     'blogs',
     'category',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
