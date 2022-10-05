@@ -1,6 +1,6 @@
 /*-------------------------------------Head---------------------------------*/
 .head {
-    background-color: #b0eef7;
+    background-color: #00ddff;
     padding: 10px 0;
     color: #fff;
 }
@@ -9,6 +9,6 @@
 }
 .head label{
     margin-right: 30 px;
-    font-size: 13px;
+    font-size: 18px;
 }
 /*-------------------------------------Head---------------------------------*/
