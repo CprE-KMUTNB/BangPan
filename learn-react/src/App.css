@@ -15,7 +15,7 @@ body{
 }
 .container{
   max-width: 90%;
-  margin: 0;
+  margin: auto;
 }
 .d_flex{
   display: flex;
@@ -39,7 +39,7 @@ li {
 .uppercase {
   text-transform: uppercase;
 }
-.uppercase {
+.capitalize {
   text-transform: capitalize;
 }
 .RText {

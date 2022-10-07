@@ -1,14 +1,14 @@
-/*-------------------------------------Head---------------------------------*/
+/*------head-----------*/
 .head {
-    background-color: #00ddff;
+    background-color: #9dc7fc;
     padding: 10px 0;
-    color: #fff;
-}
-.head i{
-    margin-right: 10 px;
-}
-.head label{
-    margin-right: 30 px;
+    color: rgb(0, 0, 0);
+  }
+  .head i {
+    margin-right: 10px;
+  }
+  .head label {
+    margin-right: 30px;
     font-size: 18px;
-}
-/*-------------------------------------Head---------------------------------*/
+  }
+  /*------head-----------*/
