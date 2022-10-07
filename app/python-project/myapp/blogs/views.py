@@ -1,4 +1,4 @@
-from unicodedata import category
+from unicodedata import category, name
 from django.shortcuts import render
 from django.http import HttpResponse
 from category.models import Category
@@ -49,3 +49,20 @@ def blogDetail(request,id) :
     singleBlog.views = singleBlog.views + 1
     singleBlog.save()
     return render(request,"frontend/blogDetail.html",{'categories':categories,'popular':popular,'Blog':singleBlog,'suggestion':suggestion})
+
+def searchCategory(request,category_id):
+
+    name_category = Category.objects.get(id=category_id)
+
+    # คำสั่งสำหรับการค้นหาใน database 
+    blogs = Donation_blogs.objects.filter(category_id=category_id)
+
+    categories = Category.objects.all()
+
+    #บทความยอดนิยม
+    popular = Donation_blogs.objects.all().order_by('-views')[:3]
+
+    #บทความแนะนำ 
+    suggestion = Donation_blogs.objects.all().order_by('views')[:3]
+ 
+    return render(request,"frontend/searchCategory.html",{ 'name_category': name_category,'blogs':blogs,'popular':popular,'suggestion':suggestion,'categories':categories})

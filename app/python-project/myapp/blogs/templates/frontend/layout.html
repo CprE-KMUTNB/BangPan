@@ -87,7 +87,7 @@
                              <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <span class="bg-orange"><a href="tech-category-01.html" title="">{{latest.category}}</a></span>
+                                        <span class="bg-orange"><a href="{% url 'searchCategory' latest.category_id %}" title="">{{latest.category}}</a></span>
                                         <h4><a href="{% url 'blogDetail' latest.id %}" title="">{{latest.name}}</a></h4>
                                         <small><a href="#" title="">{{latest.created}}</a></small>
                                         <small><a href="tech-author.html" title="">{{latest.write}}</a></small>
