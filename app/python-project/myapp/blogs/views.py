@@ -1,3 +1,4 @@
+from traceback import print_tb
 from unicodedata import category, name
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -66,3 +67,19 @@ def searchCategory(request,category_id):
     suggestion = Donation_blogs.objects.all().order_by('views')[:3]
  
     return render(request,"frontend/searchCategory.html",{ 'name_category': name_category,'blogs':blogs,'popular':popular,'suggestion':suggestion,'categories':categories})
+
+def searchWriter(request,writer):
+
+    # คำสั่งสำหรับการค้นหาใน database 
+    blogs = Donation_blogs.objects.filter(write=writer)
+
+    categories = Category.objects.all()
+
+    #บทความยอดนิยม
+    popular = Donation_blogs.objects.all().order_by('-views')[:3]
+
+    #บทความแนะนำ 
+    suggestion = Donation_blogs.objects.all().order_by('views')[:3]
+ 
+    return render(request,"frontend/searchWriter.html",{'writer':writer,'blogs':blogs,'popular':popular,'suggestion':suggestion,'categories':categories})
+

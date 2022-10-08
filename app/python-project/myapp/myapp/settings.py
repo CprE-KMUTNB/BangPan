@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'members.apps.MembersConfig',
     'blogs',
     'category',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'writedonationpanel',
 ]
 
 MIDDLEWARE = [

@@ -26,10 +26,11 @@
                     <p><b>รายละเอียดคำขอ</b> : {{blog.description}} <br> <b>เหตุผลที่ขอรับบริจาค</b> : {{blog.reason}}</p>
                     <small class="firstsmall"><a class="bg-orange" href="{% url 'searchCategory' blog.category_id %}" title="">{{blog.category}}</a></small>
                     <small><a href="#" title="">{{blog.created}}</a></small>
-                    <small><a href="tech-author.html" title="">{{blog.write}}</a></small>
+                    <small><a href="{% url 'searchWriter' blog.write %}" title="">{{blog.write}}</a></small>
                     <small><a href="#" title=""><i class="fa fa-eye"></i> {{blog.views | intcomma}}</a></small>
                 </div><!-- end meta -->
             </div><!-- end blog-box -->
+
             <br>
             {% endfor %}
         </div><!-- end blog-list -->

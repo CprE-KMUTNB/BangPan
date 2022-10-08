@@ -10,7 +10,7 @@
 
             <div class="blog-meta big-meta">
                 <small><a href="#" title="">{{Blog.created}}</a></small>
-                <small><a href="#" title="">{{Blog.write}}</a></small>
+                <small><a href="{% url 'searchWriter' Blog.write %}" title="">{{Blog.write}}</a></small>
                 <small><a href="#" title=""><i class="fa fa-eye"></i> {{Blog.views | intcomma}}</a></small>
             </div><!-- end meta -->
 

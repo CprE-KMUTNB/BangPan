@@ -22,6 +22,7 @@ urlpatterns = [
     path('',include('members.urls')),
     path('blogs/',include('blogs.urls')),
     path('admin/', admin.site.urls),
+    path('writer/dashboard',include("writedonationpanel.urls"))
 ]
 
 if settings.DEBUG:

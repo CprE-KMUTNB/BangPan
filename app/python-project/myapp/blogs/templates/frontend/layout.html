@@ -46,12 +46,17 @@
                     <a class="navbar-brand" href="tech-index.html"><img src="{% static 'frontend/images/version/tech-logo.png ' %}" alt=""></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
+
                             <li class="nav-item">
                                 <a class="nav-link" href="../../">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="tech-contact.html">Contact Us</a>
+                                <a class="nav-link" href="../../admin">Admin</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../writer/dashboard">เขียนคำขอรับบริจาค</a>
+                            </li>
+
                         </ul>
                         <ul class="navbar-nav mr-2">
                             <li class="nav-item">
@@ -72,7 +77,7 @@
             <div id="wrapper">
                 {% if user.is_authenticated %}
                 <span>Hello,{{request.user.username}}</span>
-                <form method="post" action="../../logout/" novalidate>
+                <form method="post" action="../../../logout/" novalidate>
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Log out</button>
                 </form>
@@ -83,14 +88,14 @@
                     {% for latest in latests %}
                     <div class="first-slot">
                         <div class="masonry-box post-media">
-                             <img src="{{latest.image.url}}" alt="" class="img-fluid">
+                             <img src="{{latest.image.url}}" alt="" class="img-fluid" >
                              <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
                                         <span class="bg-orange"><a href="{% url 'searchCategory' latest.category_id %}" title="">{{latest.category}}</a></span>
                                         <h4><a href="{% url 'blogDetail' latest.id %}" title="">{{latest.name}}</a></h4>
                                         <small><a href="#" title="">{{latest.created}}</a></small>
-                                        <small><a href="tech-author.html" title="">{{latest.write}}</a></small>
+                                        <small><a href="{% url 'searchWriter' latest.write %}" title="">{{latest.write}}</a></small>
                                         <small><a href="#" title=""><i class="fa fa-eye"></i> {{latest.views | intcomma}}</a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
@@ -192,7 +197,7 @@
                             <div class="link-widget">
                                 <ul>
                                     {% for category in categories %}
-                                    <li><a href="#">{{category.name}} <span>(0)</span></a></li>
+                                    <li><a href="{% url 'searchCategory' category.id %}">{{category.name}} <span>(0)</span></a></li>
                                     {% endfor %}
                                 </ul>
                             </div><!-- end link-widget -->
