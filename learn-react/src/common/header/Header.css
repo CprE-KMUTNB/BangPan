@@ -4,11 +4,27 @@
     padding: 10px 0;
     color: rgb(0, 0, 0);
   }
-  .head i {
-    margin-right: 10px;
-  }
-  .head label {
-    margin-right: 30px;
-    font-size: 18px;
-  }
-  /*------head-----------*/
+.head i {
+  margin-right: 10px;
+}
+.head label {
+  margin-right: 30px;
+  font-size: 18px;
+}
+/*------head-----------*/
+/*------search-----------*/
+.search {
+  padding: 20px 0;
+}
+.search .logo img {
+  width: auto;
+  height: auto;
+}
+.search .width {
+  width: 20%;
+}
+.search-box {
+  width: 80%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+/*------search-----------*/
