@@ -22,19 +22,19 @@ const Navbar = () => {
                 <Link to='/'>หน้าแรก</Link>
               </li>
               <li>
-                <Link to='/pages'>เกี่ยวกับเรา</Link>
+                <Link to='/users'>บัญชีผู้ใช้</Link>
               </li>
               <li>
-                <Link to='/user'>บัญชีผู้ใช้</Link>
+                <Link to='/request'>ขอรับบริจาค</Link>
               </li>
               <li>
-                <Link to='/vendor'>ขอรับบริจาค</Link>
+                <Link to='/about'>เกี่ยวกับเรา</Link>
               </li>
               <li>
-                <Link to='/track'>เข้าสู่ระบบ</Link>
+                <Link to='/login'>เข้าสู่ระบบ</Link>
               </li>
               <li>
-                <Link to='/contact'>สมัครสมาชิก</Link>
+                <Link to='/register'>สมัครสมาชิก</Link>
               </li>
             </ul>
 
