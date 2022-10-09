@@ -1,8 +1,12 @@
 import React from 'react'
-import logo from '../assets/images/logo-test.svg'
+import logo from '../assets/images/Bangpan.svg'
 import { Link } from 'react-router-dom'
 
 const Search = () => {
+  window.addEventListener('scroll', function() {
+    const search = document.querySelector('.search')
+    search.classList.toggle('active', window.scrollY > 100)
+  })
   return (
     <>
       <section className='search'>

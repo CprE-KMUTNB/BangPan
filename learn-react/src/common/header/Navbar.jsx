@@ -22,7 +22,7 @@ const Navbar = () => {
                 <Link to='/'>หน้าแรก</Link>
               </li>
               <li>
-                <Link to='/pages'>pages</Link>
+                <Link to='/pages'>เกี่ยวกับเรา</Link>
               </li>
               <li>
                 <Link to='/user'>บัญชีผู้ใช้</Link>
@@ -31,15 +31,15 @@ const Navbar = () => {
                 <Link to='/vendor'>ขอรับบริจาค</Link>
               </li>
               <li>
-                <Link to='/track'>track my order</Link>
+                <Link to='/track'>เข้าสู่ระบบ</Link>
               </li>
               <li>
-                <Link to='/contact'>contact</Link>
+                <Link to='/contact'>สมัครสมาชิก</Link>
               </li>
             </ul>
 
             <button className='toggle' onClick={() => setMobileMenu(!MobileMenu)}>
-              {MobileMenu ? <i className='fas fa-times close home-btn'></i> : <i className='fas fa-bars open'></i>}
+              {MobileMenu ? <i className='fas fa-times close home-btn'></i> : <i className='fa-solid fa-xmark open'></i>}
             </button>
           </div>
         </div>
