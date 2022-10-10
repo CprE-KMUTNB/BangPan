@@ -3,6 +3,7 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
+        {% load humanize %}
         {% load static %}
         <title>Writer Panel</title>
 
@@ -49,7 +50,7 @@
                                         <img src="{% static 'backend/img/placeholders/avatars/avatar2.jpg' %}" alt="avatar">
                                     </a>
                                 </div>
-                                <div class="sidebar-user-name">ชื่อนักเขียน</div>
+                                <div class="sidebar-user-name">{{writer}}</div>
                             </div>
                             <!-- END User Info -->
                             <!-- Sidebar Navigation -->
@@ -124,7 +125,7 @@
                                             โปรไฟล์
                                         </a>
                                         <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
-                                        <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> ออกจากระบบ</a>
+                                        <a href="{% url 'logout' %}"><i class="fa fa-ban fa-fw pull-right"></i> ออกจากระบบ</a>
                                     </li>
                                     <li class="divider"></li>
                                 </ul>
@@ -162,7 +163,7 @@
                                             <i class="gi gi-table"></i>
                                         </div>
                                         <h3 class="widget-content text-right animation-pullDown">
-                                            จำนวน <strong>50</strong><br>
+                                            จำนวน <strong>{{blogCount | intcomma}}</strong><br>
                                             <small>บทความ</small>
                                         </h3>
                                     </div>
@@ -177,7 +178,7 @@
                                             <i class="fa fa-heart"></i>
                                         </div>
                                         <h3 class="widget-content text-right animation-pullDown">
-                                            +10,000 <strong>Views</strong>
+                                            +{{total.views__sum | intcomma}} <strong>Views</strong>
                                             <small>ยอดเข้าชมทั้งหมด</small>
                                         </h3>
                                     </div>
@@ -216,7 +217,7 @@
                                         <td class="text-center">{{blog.id}}</td>
                                         <td><img src="{{blog.image.url}}" alt="" style="width: 60px;height: 50px;"></td>
                                         <td class="text-right hidden-xs"><strong>{{blog.name}}</strong></td>
-                                        <td class="text-center">{{blog.views}}</td>
+                                        <td class="text-center">{{blog.views | intcomma}}</td>
                                         <td class="hidden-xs text-center">{{blog.created}}</td>
                                         <td class="text-center">
                                             <div class="btn-group btn-group-xs">

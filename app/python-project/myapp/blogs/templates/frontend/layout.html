@@ -48,13 +48,13 @@
                         <ul class="navbar-nav mr-auto">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="../../">Home</a>
+                                <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../admin">Admin</a>
+                                <a class="nav-link" href="../admin">Admin</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../writer/dashboard">เขียนคำขอรับบริจาค</a>
+                            <li class="nav-item"> <!--% url 'ชื่อที่ตั้งในไฟล์ urls.py จาก app ไหนก็ได้ ' %-->
+                                <a class="nav-link" href="{% url 'login' %}">Login</a>
                             </li>
 
                         </ul>
@@ -77,7 +77,7 @@
             <div id="wrapper">
                 {% if user.is_authenticated %}
                 <span>Hello,{{request.user.username}}</span>
-                <form method="post" action="../../../logout/" novalidate>
+                <form method="post" action="{% url 'logout' %}" novalidate>
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Log out</button>
                 </form>

@@ -1,0 +1,55 @@
+def index(request):
+    mymembers = Members.objects.all().values()
+    template = loader.get_template('index.html')
+    context = {
+        'mymembers' : mymembers
+    } 
+    return HttpResponse(template.render(context,request))
+
+@login_required(login_url='login')
+def add(request):
+    template = loader.get_template('add.html')
+    return HttpResponse(template.render({},request))
+
+#รับค่าจาก add
+def addrecord(request):
+    firstname = request.POST['first']
+    lastname = request.POST['last']
+    member = Members(firstname = firstname, lastname =lastname)
+    member.save()
+    return HttpResponseRedirect(reverse('index'))
+
+urls.py--------------------------------------------------------------
+    path('',views.index,name='index'),
+    #path('add/',views.add,name='add'),
+    path('add/',views.add,name='add'),
+    path('add/addrecord/',views.addrecord,name='addrecord'),
+    path('delete/<int:id>',views.delete,name='delete'),
+    path('update/<int:id>', views.update, name='update'),
+    path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
+
+views.py-------------------------------------------------------------
+@login_required(login_url='login')
+def delete(request,id):
+    member = Members.objects.get(id = id)
+    member.delete()
+    return HttpResponseRedirect(reverse('index'))
+    
+@login_required(login_url='login')
+def update(request, id):
+    mymember = Members.objects.get(id = id)
+    template = loader.get_template("update.html")
+    context = {
+        'mymember': mymember
+    }
+    return HttpResponse(template.render(context,request))
+
+def updaterecord(request,id):
+
+    firstname = request.POST['first']
+    lastname = request.POST['last']
+    member = Members.objects.get(id=id)
+    member.firstname = firstname
+    member.lastname = lastname
+    member.save()
+    return HttpResponseRedirect(reverse('index'))

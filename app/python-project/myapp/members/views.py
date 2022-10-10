@@ -1,8 +1,10 @@
 from contextlib import redirect_stderr
+import email
 from multiprocessing import context
 from re import template
 import re
 from traceback import walk_stack
+from urllib.request import Request
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
@@ -14,91 +16,71 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm,AuthenticationForm,UserCreationForm
 from django.contrib.auth import login,logout
-
+from django.contrib import messages
+from django.contrib.auth.models import User #ตาราง auth_User 
 
 # Create your views here.
 def index(request):
-    mymembers = Members.objects.all().values()
-    template = loader.get_template('index.html')
-    context = {
-        'mymembers' : mymembers
-    } 
-    return HttpResponse(template.render(context,request))
-
-@login_required(login_url='login')
-def add(request):
-    template = loader.get_template('add.html')
-    return HttpResponse(template.render({},request))
-
-#รับค่าจาก add
-def addrecord(request):
-    firstname = request.POST['first']
-    lastname = request.POST['last']
-    member = Members(firstname = firstname, lastname =lastname)
-    member.save()
-    return HttpResponseRedirect(reverse('index'))
-
-@login_required(login_url='login')
-def delete(request,id):
-    member = Members.objects.get(id = id)
-    member.delete()
-    return HttpResponseRedirect(reverse('index'))
-    
-@login_required(login_url='login')
-def update(request, id):
-    mymember = Members.objects.get(id = id)
-    template = loader.get_template("update.html")
-    context = {
-        'mymember': mymember
-    }
-    return HttpResponse(template.render(context,request))
-
-def updaterecord(request,id):
-
-    firstname = request.POST['first']
-    lastname = request.POST['last']
-    member = Members.objects.get(id=id)
-    member.firstname = firstname
-    member.lastname = lastname
-    member.save()
-    return HttpResponseRedirect(reverse('index'))
-
-def login_view(request):
 
     if request.method == 'POST' :
 
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request,user)
-            return HttpResponseRedirect(reverse('index'))
-        
-    else:
-        form = AuthenticationForm()
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username,password=password)
 
-    return render(request,'account/login.html',{
-        'form':form,
-    })
+        if user is not None:
+            login(request,user)
+            return redirect('index_panel')
+        
+        else :
+            
+            messages.info(request,"ไม่พบข้อมูลบัญชีผู้ใช้งาน")
+            return redirect('login')
+            
+    return render(request,'backend/login_register.html')
 
 def logout_view(request):
 
-    if request.method == 'POST':
-        logout(request)
-        return HttpResponseRedirect(reverse('index'))
+    logout(request)
+    return redirect('login')
 
 def signup_view(request):
 
     if request.method == 'POST' :
 
-        form = UserCreationForm(data=request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request,user)
-            return HttpResponseRedirect(reverse('index'))
-        
-    else:
-        form = UserCreationForm()
+        username = request.POST['username']
+        password = request.POST['password'] # มาจาก name ใน input ของ login_register.html
+        repassword = request.POST['repassword']
+        email    = request.POST['email']
 
-    return render(request,'account/signup.html',{
-        'form':form,
-    })
+        if username == '' or password == '' or repassword =='' or email =='' :
+            messages.info(request,"กรุณาป้อนข้อมูลให้ครบ")
+            return redirect("login")
+
+        else:
+
+            if password == repassword :
+
+                if User.objects.filter(username=username).exists():
+                    messages.info(request,"Username นี้มีคนใช้แล้ว")
+                    return redirect("login")
+
+                elif User.objects.filter(email=email).exists():
+                    messages.info(request,"email นี้เคยลงทะเบียนแล้ว")
+                    return redirect("login")
+
+                else:
+
+                    user = User.objects.create_user(
+                    username = username,
+                    email = email,
+                    password = password
+                    )
+                    user.save()
+                    messages.info(request,"สร้างบัญชีเรียบร้อย")
+                    return redirect("login")
+            
+            messages.info(request,"ไม่สามารถลงทะเบียนได้รหัสผ่านไม่ตรงกัน")
+            return redirect('login')
+
+    return render(request,'backend/login_register.html')
