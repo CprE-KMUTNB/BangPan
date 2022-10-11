@@ -65,3 +65,34 @@ input, button {
 .boxShadow {
   box-shadow: rgb(43 52 69 / 10%) 0 4px 16px;
 }
+/*------------category------------*/
+.conteneWidth {
+  width: 82%;
+}
+.category {
+  width: 18%;
+  box-shadow: rgb(43 52 69 / 10%) 0 4px 16px;
+  height: 250px;
+  padding: 15px 0;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.category img {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  object-fit: contain;
+}
+.category span {
+  margin: 10px 20px;
+  text-transform: capitalize;
+}
+.category .box {
+  transition: 0.5s;
+  padding: 0 20px;
+}
+.category .box:hover {
+  background-color: #e0eeff;
+  cursor: pointer;
+}
+/*------------category------------*/
