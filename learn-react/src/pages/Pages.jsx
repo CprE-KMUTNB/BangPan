@@ -1,16 +1,10 @@
 import React from 'react'
-import Categories from '../components/mainpage/Categories'
-import SlideCard from '../components/mainpage/SlideCard'
+import Home from '../components/mainpage/Home'
 
 const Pages = () => {
   return (
     <>
-        <section className='home'>
-            <div className='container d_flex'>
-                <Categories />
-                <SlideCard />
-            </div>
-        </section>
+      <Home />
     </>
   )
 }
