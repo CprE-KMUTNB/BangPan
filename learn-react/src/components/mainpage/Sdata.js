@@ -1,27 +1,27 @@
 const Sdata = [
-    {
-      id: 1,
-      title: "50% Off For Your First Shopping",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-      cover: "./images/SlideCard/slide-1.png",
-    },
-    {
-      id: 2,
-      title: "50% Off For Your First Shopping",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-      cover: "./images/SlideCard/slide-2.png",
-    },
-    {
-      id: 3,
-      title: "50% Off For Your First Shopping",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-      cover: "./images/SlideCard/slide-3.png",
-    },
-    {
-      id: 4,
-      title: "50% Off For Your First Shopping",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-      cover: "./images/SlideCard/slide-4.png",
-    },
-  ]
-  export default Sdata
+  {
+    id: 1,
+    title: "อิ่มใจ อิ่มบุญ ด้วยการ “ให้” และ “แบ่งปัน”",
+    desc: "ช่วยให้ผู้อื่นได้รับประโยชน์ และสามารถต่อชีวิต มีอนาคต มีงานทำเลี้ยงตัวเองและครอบครัว จากสิ่งของที่เราบริจาค",
+    cover: "./images/SlideCard/slide-1.jpg",
+  },
+  {
+    id: 2,
+    title: "อิ่มใจ อิ่มบุญ ด้วยการ “ให้” และ “แบ่งปัน”",
+    desc: "ช่วยให้สังคมเกิดความสงบสุขมากขึ้น มีส่วนช่วยลดปัญหาอาชญากรรม การลักเล็กขโมยน้อย การฉกชิงวิ่งราว จากสิ่งของที่เราบริจาค",
+    cover: "./images/SlideCard/slide-2.jpg",
+  },
+  {
+    id: 3,
+    title: "อิ่มใจ อิ่มบุญ ด้วยการ “ให้” และ “แบ่งปัน”",
+    desc: "ช่วยให้ผู้อื่นพ้นทุกข์ พ้นจากความขาดแคลน หรือความทุกข์ยาก ความทุกข์โศก จากสิ่งของที่เราบริจาค",
+    cover: "./images/SlideCard/slide-3.jpg",
+  },
+  {
+    id: 4,
+    title: "อิ่มใจ อิ่มบุญ ด้วยการ “ให้” และ “แบ่งปัน”",
+    desc: " ช่วยให้จิตใจของผู้ให้ มีความสุข สงบ จากการรู้จักเสียสละ อุทิศสิ่งของของตนให้แก่ผู้อื่นได้ โดยไม่ยึดติด เป็นการปล่อยวางอย่างหนึ่งที่ทำให้จิตใจสุขสงบ",
+    cover: "./images/SlideCard/slide-4.jpg",
+  },
+]
+export default Sdata
