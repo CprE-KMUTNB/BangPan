@@ -26,6 +26,7 @@
 .search-box {
   width: 80%;
   border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
 }
 .search-box i {
   width: 5%;
