@@ -27,8 +27,8 @@
             <img src="{{Blog.image.url}}" alt="" class="img-fluid">
         </div><!-- end media -->
         <div class="blog-content">  
-            <b>รายละเอียดคำขอ     : </b>{{Blog.description}}<br>
-            <b>เหตุผลที่ขอรับบริจาค  : </b>{{Blog.reason}}<br>
+            <b>รายละเอียดคำขอ     : </b>{{Blog.description }}<br>
+            <b>เหตุผลที่ขอรับบริจาค  : </b>{{Blog.reason | safe}}<br>
             <b>สถานที่รับบริจาค     : </b>{{Blog.location}}<br>
             {{Blog.Amount_requested}}
         </div><!-- end content -->
