@@ -1,15 +1,11 @@
 /*------head-----------*/
 .head {
     background-color: #9dc7fc;
-    padding: 10px 0;
+    padding: 5px;
     color: rgb(0, 0, 0);
   }
-.head i {
-  margin-right: 10px;
-}
-.head label {
-  margin-right: 30px;
-  font-size: 18px;
+.right-row {
+  text-align: right;
 }
 /*------head-----------*/
 /*------search-----------*/
@@ -49,60 +45,29 @@
   border-left: 2px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
 }
-.cart {
+.user {
   position: relative;
-}
-.search .cart span {
-  position: absolute;
-  top: -10px;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: #e94560;
-  font-size: 12px;
-  color: #fff;
 }
 .search .f_flex {
   justify-content: end;
 }
 /*------search-----------*/
-.categories {
-  background-color: #f6f9fc;
-  padding: 0 30px;
-  border-radius: 5px;
-  height: 6vh;
-  margin-top: 5px;
-}
-.categories span {
-  margin-right: 20px;
-  font-size: 30px;
-  margin-top: 10px;
-}
-.categories h4 {
-  font-weight: 500;
-  margin-top: 10px;
-}
-.categories h4 i {
-  margin-left: 10px;
-}
-header {
-  height: 8vh;
+.search {
+  height: 9.5vh;
   box-shadow: -1px 15px 17px -8px rgba(0, 0, 0, 0.1);
 }
-header ul {
+head ul {
   line-height: 8vh;
 }
-header ul li {
+head ul li {
   margin-left: 30px;
 }
-header ul li a {
+head ul li a {
   transition: 0.5s;
   font-size: 15px;
   font-weight: 400;
 }
-header ul li a:hover {
+head ul li a:hover {
   color: #e94560;
 }
 .open {
@@ -120,7 +85,7 @@ header ul li a:hover {
 }
 
 @media (max-width: 768px) {
-  header ul {
+  head ul {
     padding-top: 30px;
   }
   .nav-links-MobileMenu {
@@ -136,13 +101,13 @@ header ul li a:hover {
     z-index: 888;
     box-shadow: rgba(50, 50, 93, 0.23) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
   }
-  header ul li {
+  head ul li {
     width: 100%;
     transition: all 0.5s ease-in-out;
     text-transform: uppercase;
     line-height: 70px;
   }
-  header .link {
+  head .link {
     display: none;
   }
   .close,

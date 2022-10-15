@@ -1,30 +1,31 @@
-import React from 'react'
-import './Footer.css'
+import React from "react"
+import "./Footer.css"
 
 const Footer = () => {
   return (
     <>
-        <footer>
-            <div className='container grid2'>
-                <div className='box'>
-                    <h1>Bangpan</h1>
-                    <p>Website สำหรับการแบ่งปันสิ่งดีๆให้แก่ผู้อื่น</p>
-                </div>
-                <div className='box'>
-                    <h2>เกี่ยวกับเรา</h2>
-                    <ul>
-                        <li>นักศึกษาคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์</li>
-                    </ul>
-                </div>
-                <div className='box'>
-                    <h2>ผู้พัฒนา</h2>
-                    <ul>
-                        <li>นายจิรนันท์ หงวนประโคน 6401012630043</li>
-                        <li>นายศุภากร จักรสถาพร 6401012630124</li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+      <footer>
+        <div className='grid-container'>
+          <div className='box'>
+            <h1>Bangpan</h1>
+            <p>Website สำหรับแบ่งปันสิ่งดีๆ ให้ผู้อื่น</p>
+          </div>
+
+          <div className='box'>
+            <h2>เกี่ยวกับเรา</h2>
+            <ul>
+              <p>นักศึกษาคณะวิศวกรรมสาสตร์ สาขาวิศวกรรมคอมพิวเตอร์</p>
+            </ul>
+          </div>
+          <div className='box'>
+            <h2>ผู้พัฒนา</h2>
+            <ul>
+              <p>นาย จิรนันท์ หงวนประโคน รหัสนักศึกษา 6401012630043</p>
+              <p>นาย ศุภากร จักรสถาพร รหัสนักศึกษา 6401012630124</p>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }

@@ -1,12 +1,15 @@
 footer {
     background-color: #9dc7fc;
-    padding: 50px 0;
     color: #fff;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
 }
 footer h1 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #fff;
-    font-weight: 500px;
+    font-weight: 800;
     font-style: italic;
 }
 footer p {
@@ -17,8 +20,10 @@ footer p {
 }
 footer h2 {
     margin-bottom: 20px;
-  }
-  footer li {
-    margin-bottom: 10px;
-    opacity: 0.8;
-  }
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #9dc7fc;
+    padding: 20px;
+}
