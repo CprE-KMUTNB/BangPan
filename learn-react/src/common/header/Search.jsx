@@ -23,7 +23,7 @@ const Search = () => {
 
           <div className='icon f_flex width'>
             <div className='user'>
-              <Link to='/users'>
+              <Link to='/profile'> {/* มาเปลี่ยน path ด้วย */}
                 <i className='fa fa-user icon-circle'></i>
               </Link>
             </div>

@@ -1,23 +1,21 @@
 import './App.css';
 import Header from './common/header/Header';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Pages from './pages/Pages';
+import { Routes, Route, Link } from "react-router-dom";
 import Footer from "./common/footer/Footer"
+import Pages from "./pages/Pages"
+import Login from './components/login/Login';
+import Profile from './components/login/Profile';
 
 function App() {
   return (
     <>
-      <Router>
         <Header />
-        <Switch>
-          <Route path='/' exact>
-            <Pages />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Pages />} />
+          <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+        </Routes>
         <Footer />
-      </Router>
-      
-
     </>
   );
 }
