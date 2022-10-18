@@ -1,0 +1,27 @@
+import './App.css';
+import Header from './common/header/Header';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Footer from "./common/footer/Footer"
+import Pages from "./pages/Pages"
+import Login from './components/login/Login';
+
+function App() {
+  return (
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact>
+            <Pages />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </>
+  );
+}
+
+export default App;
