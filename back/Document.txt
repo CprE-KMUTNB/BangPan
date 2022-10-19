@@ -1,0 +1,10 @@
+https://stackpython.co/tutorial/django-slugfield-optimize-urls-seo-google
+
+
+
+-------------------------
+https://www.django-rest-framework.org/tutorial/quickstart/
+
+https://github.com/encode/django-rest-framework
+
+https://github.com/summernote/django-summernote
