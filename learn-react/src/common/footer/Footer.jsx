@@ -1,7 +1,14 @@
 import React from "react"
 import "./Footer.css"
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+
+  const { pathname } = useLocation();
+  console.log(pathname);
+  // ทำให้ไม่แสดง footer ในหน้า /request
+  if (pathname === "/request") return null;
+
   return (
     <>
       <footer>

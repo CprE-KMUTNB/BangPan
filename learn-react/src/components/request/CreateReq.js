@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Typography, Button, Form, Input } from 'antd';
-import 'antd/dist/antd.css';
+import FileUpload from './utils/FileUpload';
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -47,6 +47,9 @@ function CreateReq() {
         </div>
 
         <Form onSubmit>
+
+            <FileUpload />
+
             <br />
             <br />
             <label>หัวข้อ</label>
