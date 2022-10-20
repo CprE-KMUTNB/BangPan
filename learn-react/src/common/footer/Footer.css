@@ -12,6 +12,12 @@ footer h1 {
     font-weight: 800;
     font-style: italic;
 }
+footer h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 800;
+    font-style: italic;
+}
 footer p {
     font-size: 18px;
     font-weight: 300;
@@ -25,5 +31,5 @@ footer h2 {
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #9dc7fc;
-    padding: 20px;
+    padding: auto;
 }

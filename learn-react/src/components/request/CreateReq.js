@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Typography, Button, Form, Input } from 'antd';
+import 'antd/dist/antd.css';
 
 const { Title } = Typography;
 const { TextArea } = Input;
