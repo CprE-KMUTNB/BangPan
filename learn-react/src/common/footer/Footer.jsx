@@ -8,6 +8,7 @@ const Footer = () => {
   console.log(pathname);
   // ทำให้ไม่แสดง footer ในหน้า /request
   if (pathname === "/request") return null;
+  if (pathname === "/smallChildren") return null;
 
   return (
     <>
