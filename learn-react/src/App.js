@@ -7,7 +7,7 @@ import Login from './components/login/Login';
 import Profile from './components/login/Profile';
 import Register from './components/login/Register';
 import CreateReq from './components/request/CreateReq';
-import Listpage from './components/list/Listpage';
+import SmallC from './components/list/SmallC';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="register" element={<Register />} />
           <Route path="request" element={<CreateReq />} />
-          <Route path="smallChildren" element={<Listpage />} />
+          <Route path="smallChildren" element={<SmallC />} />
         </Routes>
         <Footer />
     </>

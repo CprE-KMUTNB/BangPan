@@ -15,13 +15,13 @@ const Categories = () => {
         },
         {
             cateImg:'./images/category/cat3.png',
-            cateName:'ผู้ใหญ่',
-            linkTo: '/adult'
+            cateName:'คนชรา',
+            linkTo: '/oldPeople'
         },
         {
             cateImg:'./images/category/cat4.png',
-            cateName:'คนชรา',
-            linkTo: '/old'
+            cateName:'คนพิการ',
+            linkTo: '/cripple'
         },
         {
             cateImg:'./images/category/cat5.png',
