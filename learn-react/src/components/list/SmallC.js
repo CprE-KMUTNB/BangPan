@@ -9,7 +9,7 @@ const SmallC = () => {
     useEffect (() => {
         const fetchData = async () => {
             try {
-                const res = awaith axios.get('${process.env.REACT_APP_API_URL}/api/blog/featured')
+                const res = await axios.get('${process.env.REACT_APP_API_URL}/api/blog/featured')
             }
             catch (err) {
 
