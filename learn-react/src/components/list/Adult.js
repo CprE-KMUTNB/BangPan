@@ -2,7 +2,7 @@ import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 
-const SmallC = () => {
+const Adult = () => {
 
     const [donationblogs, setBlogs] = useState([]);
     const [donationfeaturedBlog, setFeaturedBlog] = useState([]);
@@ -118,7 +118,7 @@ const SmallC = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดหมู่เด็กเล็ก</h1>
+                        <h1 style={{color:'#fff'}}>หมวดหมู่คนชรา</h1>
                     </p>
                 </div>
             </div>
@@ -128,4 +128,4 @@ const SmallC = () => {
     );
 };
 
-export default SmallC ;
+export default Adult ;

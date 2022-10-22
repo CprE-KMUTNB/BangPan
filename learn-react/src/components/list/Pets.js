@@ -2,7 +2,7 @@ import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 
-const SmallC = () => {
+const Pets = () => {
 
     const [donationblogs, setBlogs] = useState([]);
     const [donationfeaturedBlog, setFeaturedBlog] = useState([]);
@@ -101,9 +101,6 @@ const SmallC = () => {
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-start">
 
-                    <Link className="p-2 text-muted" to='/category/2'>เสื้อผ้า</Link>
-                    <Link className="p-2 text-muted" to='/category/3'>รองเท้า</Link>
-                    <Link className="p-2 text-muted" to='/category/4'>ของใช้</Link>
                     <Link className="p-2 text-muted" to='/category/5'>อาหารและยา</Link>
                     <Link className="p-2 text-muted" to='/category/6'>เงินบริจาค</Link>
 
@@ -118,7 +115,7 @@ const SmallC = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดหมู่เด็กเล็ก</h1>
+                        <h1 style={{color:'#fff'}}>หมวดหมู่สัตว์เลี้ยง</h1>
                     </p>
                 </div>
             </div>
@@ -128,4 +125,4 @@ const SmallC = () => {
     );
 };
 
-export default SmallC ;
+export default Pets ;

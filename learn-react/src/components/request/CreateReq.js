@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import 'antd/dist/antd.min.css';
 import { Typography, Button, Form, Input } from 'antd';
 import FileUpload from './utils/FileUpload';
 
@@ -7,8 +8,8 @@ const { TextArea } = Input;
 
 const Continents = [
     {key:1, value:'เสื้อผ้า'},
-    {key:2, value:'ของใช้'},
-    {key:3, value:'อุปกรณ์การศึกษา'},
+    {key:2, value:'รองเท้า'},
+    {key:3, value:'ของใช้'},
     {key:4, value:'อาหารและยา'}
 ]
 

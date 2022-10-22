@@ -67,12 +67,12 @@ input, button {
 }
 /*------------category------------*/
 .contentWidth {
-  width: 90%;
+  width: 85%;
 }
 .category {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
   background-color: #fff;
-  width: 10%;
+  width: 15%;
   height: 400px;
   padding: 15px 0;
   border-radius: 5px;
@@ -97,18 +97,3 @@ input, button {
   cursor: pointer;
 }
 /*------------category------------*/
-/*------------card------------*/
-.grid-container {
-  display: grid;
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
-}
-
-@media (min-width: 576px) {
-  .grid-container { grid-template-columns: repeat(1, 1fr); }
-}
-
-@media (min-width: 992px) {
-  .grid-container { grid-template-columns: repeat(3, 1fr); }
-}
-/*------------card------------*/
