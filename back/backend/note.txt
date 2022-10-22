@@ -1,0 +1,28 @@
+pip install django django-cors-headers django-summernote djangorestframework Pillow mysqlclient 
+
+-----------------------------------------------------------
+model.py 
+
+class Category(models.Model):
+    
+    name = models.CharField(max_length=255,unique=True) # unique=True ห้ามตั้งชื่อซ้ำ
+
+    def __str__(self):
+        return self.name
+
+
+
+    featured = models.BooleanField(default=False)
+    
+        if self.featured:
+
+            try:
+                temp = Donation_blogs.objects.get(featured = True)
+                if self != temp :
+                    temp.featured = False
+                    temp.save()
+
+            except Donation_blogs.DoesNotExist:
+                pass
+
+        super(Donation_blogs,self).save(*args,**kwargs)
