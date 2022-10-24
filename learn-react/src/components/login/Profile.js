@@ -1,8 +1,12 @@
 import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Typography } from 'antd';
+import { Form } from 'react-bootstrap'
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+
+const { Title } = Typography;
 
 function Profile() {
   const navigate = useNavigate()
@@ -49,14 +53,34 @@ function Profile() {
   if (isLoaded) return (<div>Loading</div>)
   else {
     return (
-      <div>
-        <div>{user.fname}</div>
-        <div>{user.lname}</div>
-        <div>{user.username}</div>
-        <div>{user.emali}</div>
-        <div><img src = {user.avatar} alt = {user.id} width={100}/></div>
-        <div><button onClick={logout}>Logout</button></div>
-      </div>
+      <div style={{maxWidth:'300px', margin:'2rem auto'}}>
+        <div style={{textAlign:'center', marginBottom:'2rem'}}>
+            <Title level={2}>ข้อมูลบัญชีผู้ใช้</Title>
+        </div>
+
+        <Form.Group className="mb-3">
+            <Form.Label>ชื่อ</Form.Label>
+            <Form.Control placeholder={user.fname} disabled />
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>นามสกุล</Form.Label>
+            <Form.Control placeholder={user.lname} disabled />
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control placeholder={user.email} disabled />
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+            <Form.Control placeholder={user.username} disabled />
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control placeholder={user.password} disabled />
+        </Form.Group>
+        <div><button onClick={logout} type="button" className="btn btn-outline-danger">Logout</button></div>
+        
+    </div>
     )
   }
 }

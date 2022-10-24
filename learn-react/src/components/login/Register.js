@@ -59,7 +59,7 @@ function Register() {
                         html: <i>{result.message}</i>,
                         icon: 'success'
                       }).then((value) => {
-                        navigate('/')
+                        navigate('/login')
                       })
                 } else {
                     MySwal.fire({

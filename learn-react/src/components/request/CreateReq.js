@@ -10,7 +10,8 @@ const Continents = [
     {key:1, value:'เสื้อผ้า'},
     {key:2, value:'รองเท้า'},
     {key:3, value:'ของใช้'},
-    {key:4, value:'อาหารและยา'}
+    {key:4, value:'อาหารและยา'},
+    {key:5, value:'เงินบริจาค'}
 ]
 
 function CreateReq() {
@@ -64,6 +65,11 @@ function CreateReq() {
             <br />
             <br />
             <label>เหตุผลที่ขอรับบริจาค</label>
+            <TextArea onChange={onReasonChange} value={ReasonValue} />
+
+            <br />
+            <br />
+            <label>ข้อมูลสำหรับการติดต่อ</label>
             <TextArea onChange={onReasonChange} value={ReasonValue} />
 
             <br />
