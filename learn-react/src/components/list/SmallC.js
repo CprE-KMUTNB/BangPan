@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import { Card, Button } from 'react-bootstrap'
 
 const SmallC = () => {
 
@@ -93,11 +94,7 @@ const SmallC = () => {
     };
 
     return (
-
-        
         <div className='container mt-3'>
-            
-
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-start">
 
@@ -122,6 +119,18 @@ const SmallC = () => {
                     </p>
                 </div>
             </div>
+
+            <Card style={{ width: '18rem', marginTop: 20 }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                    <Card.Text>
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                    </Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+            </Card>
 
             {getBlogs()}
         </div>

@@ -12,7 +12,7 @@ import Child from './components/list/Child';
 import Cripple from './components/list/Cripple';
 import Pets from './components/list/Pets';
 import Adult from './components/list/Adult';
-import About from './components/login/About';
+import MyRequest from './components/request/MyRequest';
 
 function App() {
   return (
@@ -23,13 +23,13 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
           <Route path="register" element={<Register />} />
-          <Route path="request" element={<CreateReq />} />
+          <Route path="request" element={<MyRequest />} />
           <Route path="smallChildren" element={<SmallC/>} />
           <Route path="children" element={<Child />} />
           <Route path="cripple" element={<Cripple />} />
           <Route path="pets" element={<Pets />} />
           <Route path="oldPeople" element={<Adult />} />
-          <Route path="about" element={<About />} />
+          <Route path="request/create" element={<CreateReq />} />
         </Routes>
         <Footer />
     </>
