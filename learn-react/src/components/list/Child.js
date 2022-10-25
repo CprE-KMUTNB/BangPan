@@ -110,7 +110,7 @@ const Child = () => {
                 </nav>
             </div>
             
-            <div className="jumbotron p-4 p-md-5 text-white rounded bg-secondary">
+            <div className="jumbotron p-4 p-md-5 text-white rounded bg-info">
                 <div className="col-md-6 px-0">
                     <h1 className="display-4 font-italic">{donationfeaturedBlog.name}</h1>
                     <p className="lead my-3">{donationfeaturedBlog.created}</p>

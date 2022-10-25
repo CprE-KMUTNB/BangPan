@@ -1,5 +1,5 @@
 footer {
-    background-color: #9dc7fc;
+    background-color: #5bc0de;
     color: #fff;
     position:absolute;
     left:0;
@@ -30,6 +30,7 @@ footer h2 {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: #9dc7fc;
+    background-color: #0dcaf0;
     padding: auto;
+    padding-left: 170px;
 }

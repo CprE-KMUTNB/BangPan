@@ -1,42 +1,24 @@
 import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Head = () => {
-  const [MobileMenu, setMobileMenu] = useState(false);
   return (
     <>
-      <section className="head">
-        <div className="container d_flex">
-          <div className="left-row">
-            <ul className={ MobileMenu ? "nav-links-MobileMenu" : "link f_flex capitalize"} 
-                onClick={() => setMobileMenu(false)}>
-              <li>
-                <Link to="/request">ขอรับบริจาค</Link>
-              </li>
+      <header className="p-3 text-bg-info">
+        <div className="container">
+          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="/" className="nav-link px-2 text-secondary">หน้าแรก</a></li>
+              <li><a href="/request" className="nav-link px-2 text-white">ขอรับบริจาค</a></li>
             </ul>
-          </div>
-          <div className="right-row RText">
-            <ul className={MobileMenu ? "nav-links-MobileMenu" : "link f_flex capitalize"} onClick={() => setMobileMenu(false)}>
-              <li>
-                <Link to="/">หน้าแรก</Link>
-              </li>
-              <li>
-                <Link to="/about">เกี่ยวกับเรา</Link>
-              </li>
-              <li>
-                <Link to="/login">เข้าสู่ระบบ</Link>
-              </li>
-              <li>
-                <Link to="/register">สมัครสมาชิก</Link>
-              </li>
-            </ul>
-            <button className='toggle' onClick={() => setMobileMenu(!MobileMenu)}>
-              {MobileMenu ? <i className='fas fa-times close home-btn'></i> : <i className='fa-solid fa-bars open'></i>}
-            </button>
+
+            <div className="text-end">
+              <a href="/login" className="btn btn-outline-light me-2" role="button">Login</a>
+              <a href="/register" className="btn btn-warning" role="button">Sign-up</a>
+            </div>
           </div>
         </div>
-      </section>
+      </header>
     </>
   );
 };
