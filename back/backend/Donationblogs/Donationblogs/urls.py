@@ -25,9 +25,11 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('api/Donationblogs/',include('blogs.urls')),
     path('api/Donationblogs/write/',include('writedonation.urls')),
-    path('api/accounts/',include('accounts.urls')),
+    path('accounts/',include('accounts.urls')),
+    path('profile/',include('user_profile.urls')),
 
     path('admin/', admin.site.urls),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name = 'index.html'))]

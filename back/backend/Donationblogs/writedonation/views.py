@@ -1,3 +1,4 @@
+from asyncore import write
 from cgitb import lookup
 from dataclasses import dataclass
 from math import perm
@@ -15,21 +16,28 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from django.core.files.storage import FileSystemStorage
 from rest_framework.viewsets import ModelViewSet
 from django.http import Http404
+from django.contrib.auth import get_user_model
 
+User=get_user_model()
 # Create your views here.
-class CreatedDonationView(ModelViewSet):
-    
-    http_method_names = ['post']
-    queryset =  Donation_blogs.objects.all()
-    serializer_class = writeDonationSerializer
-    permission_classes = (permissions.AllowAny, )
 
-    def createDonation(self, request, *args, **kwargs):
+class BuildeDonationView(APIView):
+
+    permission_classes = (permissions.IsAuthenticated, )
+
+    def post(self, request, format=None):
 
         data = request.data
-        # .save() will create a new instance.
+        data['write'] = self.request.user.id
         serializer = writeDonationSerializer(data=data)
-        serializer.save()
+        
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UpdateDonationView(APIView):
 
@@ -39,12 +47,12 @@ class UpdateDonationView(APIView):
         except Donation_blogs.DoesNotExist:
             raise Http404
 
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def put(self, request, pk, format=None):
 
         old = self.get_object(pk)
-        print(old)
+
         serializer = writeDonationSerializer(old,data=request.data)
         
         if serializer.is_valid():
@@ -56,7 +64,7 @@ class UpdateDonationView(APIView):
 
 class DeleteDonationView(APIView):
 
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def get_object(self, pk):
         try:
@@ -69,5 +77,7 @@ class DeleteDonationView(APIView):
         donation_target.delete()
         
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
     

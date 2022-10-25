@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'blogs',
     'writedonation',
-    'accounts'
+    'accounts',
+    'user_profile'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'Donationblogs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydonation',
+        'NAME': 'MyDonationblogsV3',
         'USER': 'root',
         'PASSWORD' : '', 
         'HOST' : 'localhost'
@@ -143,8 +144,14 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+
 }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -152,3 +159,5 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 SUMMERNOTE_THEME = 'bs4'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTH_USER_MODEL = 'accounts.User'
