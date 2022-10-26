@@ -93,7 +93,7 @@ function CreateReq() {
             <br />
             <br />
             <label>จำนวนที่ต้องการ</label>
-            <TextArea onChange={onReasonChange} value={AmountValue} />
+            <TextArea onChange={onAmountChange} value={AmountValue} />
 
             <br />
             <br />
