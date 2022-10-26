@@ -14,13 +14,23 @@ const Continents = [
     {key:5, value:'เงินบริจาค'}
 ]
 
+const Category = [
+    {key:1, value:'เด็กเล็ก'},
+    {key:2, value:'เด็กโต'},
+    {key:3, value:'คนชรา'},
+    {key:4, value:'คนพิการ'},
+    {key:5, value:'สัตว์เลี้ยง'}
+]
+
 function CreateReq() {
 
     const [TitleValue, setTitleValue] = useState('')
     const [DescriptionValue, setDescriptionValue] = useState('')
     const [ReasonValue, setReasonValue] = useState('')
+    const [AmountValue, setAmountValue] = useState('')
     const [AddressValue, setAddressValue] = useState('')
     const [ContinentValue, setContinentValue] = useState(1)
+    const [CategoryValue, setCategoryValue] = useState(1)
 
     const onTitleChange = (event) => {
         setTitleValue(event.currentTarget.value)
@@ -34,12 +44,20 @@ function CreateReq() {
         setReasonValue(event.currentTarget.value)
     }
 
+    const onAmountChange = (event) => {
+        setAmountValue(event.currentTarget.value)
+    }
+
     const onAddressChange = (event) => {
         setAddressValue(event.currentTarget.value)
     }
 
     const onContinentSelectChange = (event) => {
         setContinentValue(event.currentTarget.value)
+    }
+
+    const onCategorySelectChange = (event) => {
+        setCategoryValue(event.currentTarget.value)
     }
 
   return (
@@ -69,14 +87,16 @@ function CreateReq() {
 
             <br />
             <br />
-            <label>ข้อมูลสำหรับการติดต่อ</label>
+            <label>ที่อยู่/ที่ตั้ง</label>
+            <TextArea onChange={onAddressChange} value={AddressValue} />
+
+            <br />
+            <br />
+            <label>จำนวนที่ต้องการ</label>
             <TextArea onChange={onReasonChange} value={ReasonValue} />
 
             <br />
             <br />
-            <label>ที่อยู่/ที่ตั้ง</label>
-            <TextArea onChange={onAddressChange} value={AddressValue} />
-
             <select onChange={onContinentSelectChange}>
                 {Continents.map(item => (
                     <option key={item.key} value={item.key}>
@@ -84,9 +104,19 @@ function CreateReq() {
                     </option>
                 ))}
             </select>
-            <br />
-            <br />
 
+            <br />
+            <br />
+            <select onChange={onCategorySelectChange}>
+                {Category.map(item => (
+                    <option key={item.key} value={item.key}>
+                        {item.value}
+                    </option>
+                ))}
+            </select>
+
+            <br />
+            <br />
             <Button>
                 Submit
             </Button>

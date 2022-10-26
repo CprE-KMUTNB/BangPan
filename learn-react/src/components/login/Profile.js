@@ -74,10 +74,6 @@ function Profile() {
             <Form.Label>Username</Form.Label>
             <Form.Control placeholder={user.username} disabled />
         </Form.Group>
-        <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control placeholder={user.password} disabled />
-        </Form.Group>
         <div><button onClick={logout} type="button" className="btn btn-outline-danger">Logout</button></div>
         
     </div>
