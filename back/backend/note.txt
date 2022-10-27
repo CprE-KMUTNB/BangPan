@@ -1,4 +1,4 @@
-pip install django django-cors-headers django-summernote djangorestframework Pillow mysqlclient 
+pip install django django-cors-headers django-summernote djangorestframework Pillow mysqlclient django-filter 
 
 -----------------------------------------------------------
 model.py 

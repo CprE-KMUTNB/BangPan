@@ -13,6 +13,8 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters.html import HtmlFormatter
 from pygments import highlight
 from rest_framework.decorators import api_view, permission_classes
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 # Create your views here.
 @permission_classes((permissions.AllowAny,))
@@ -109,17 +111,12 @@ class Donation_blogsWriterView(APIView):
 
         return Response(serializer.data)
 
+@permission_classes((permissions.AllowAny,))
+class SearchDonationblogView(APIView):
 
-class TestView(APIView):
-
+    queryset = Donation_blogs.objects.all()
     serializer_class = Donation_blogsSerializer
-    permission_classes = (permissions.AllowAny, )
-
-    def get(self,plz2,request,format=None):
-
-        print('Seesioin',plz2)
-
-        return Response({ 'ok': 'Something went wrong when retrieving profile' })
-
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['=category_object']
 
 

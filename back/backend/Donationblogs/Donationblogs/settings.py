@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'blogs',
     'writedonation',
     'accounts',
-    'user_profile'
+    'user_profile',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -152,6 +153,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
 
+     'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
 }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
