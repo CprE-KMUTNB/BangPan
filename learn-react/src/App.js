@@ -33,7 +33,7 @@ function App() {
           <Route path="oldPeople" element={<Adult />} />
           <Route path="all" element={<AllCate />} />
           <Route path="request/create" element={<CreateReq />} />
-          <Route path="request/:id" element={<Category />} />
+          <Route path="category_object/:id" element={<Category />} />
         </Routes>
         <Footer />
     </>

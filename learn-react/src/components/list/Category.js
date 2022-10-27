@@ -8,7 +8,7 @@ const Category = (props) => {
     const { category_target } = useParams();
 
     useEffect(() => {
-
+            
         setCurrentCategory(category_target);
 
         const config = {
@@ -71,7 +71,7 @@ const Category = (props) => {
         <div className='container mt-3'>
             <h3 className='display-4'>{currentCategory}</h3>
             <div className="nav-scroller py-1 mb-2">
-                <nav className="nav d-flex justify-content-between">
+                <nav className="nav d-flex justify-content-start">
 
                     <Link className="p-2 text-muted" to='/category_object/เสื้อผ้า'>เสื้อผ้า</Link>
                     <Link className="p-2 text-muted" to='/category_object/รองเท้า'>รองเท้า</Link>
