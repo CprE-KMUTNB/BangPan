@@ -42,7 +42,7 @@ const BlogDetail = (props) => {
             <h4>{blog.created}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
-            <p className='lead mb-5'><Link to='/Donationblogs/' className='font-weight-bold'>Back to Blogs</Link></p>
+            <p className='lead mb-5'><Link to='/' className='font-weight-bold'>ย้อนกลับ</Link></p>
         </div>
     );
 };
