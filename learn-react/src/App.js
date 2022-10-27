@@ -13,6 +13,8 @@ import Cripple from './components/list/Cripple';
 import Pets from './components/list/Pets';
 import Adult from './components/list/Adult';
 import MyRequest from './components/request/MyRequest';
+import AllCate from './components/list/AllCate';
+import Category from './components/list/Category';
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
           <Route path="cripple" element={<Cripple />} />
           <Route path="pets" element={<Pets />} />
           <Route path="oldPeople" element={<Adult />} />
+          <Route path="all" element={<AllCate />} />
           <Route path="request/create" element={<CreateReq />} />
+          <Route path="request/:id" element={<Category />} />
         </Routes>
         <Footer />
     </>

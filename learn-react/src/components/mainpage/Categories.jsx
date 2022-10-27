@@ -28,6 +28,11 @@ const Categories = () => {
             cateName:'สัตว์เลี้ยง',
             linkTo: '/pets'
         },
+        {
+            cateImg:'./images/category/cat6.png',
+            cateName:'ทุกหมวดหมู่',
+            linkTo: '/all'
+        },
     ]
   return (
     <>

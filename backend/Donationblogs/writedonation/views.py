@@ -52,8 +52,9 @@ class UpdateDonationView(APIView):
     def put(self, request, pk, format=None):
 
         old = self.get_object(pk)
-
-        serializer = writeDonationSerializer(old,data=request.data)
+        data = request.data
+        data['write'] = self.request.user.id
+        serializer = writeDonationSerializer(old,data=data)
         
         if serializer.is_valid():
             serializer.save()

@@ -13,14 +13,15 @@ class Category_Object(models.TextChoices):
     
     CLOTHES     = 'เสื้อผ้า'
     SHOSE       = 'รองเท้า'
-    FOOD        = 'อาหาร'
-    DRUG        = 'ยา'
+    FOODDRUG    = 'อาหารและยา'
     APPLIANCE   = 'ของใช้'
+    DONATE      = 'เงินบริจาค'
 
 class Category_User(models.TextChoices):
     
-    KID         = 'เด็ก'
-    ADULT       = 'ผู้ใหญ่'
+    SMALLKID    = 'เด็กเล็ก'
+    KID         = 'เด็กโต'
+    PETS        = 'สัตว์เลี้ยง'
     GRAYBEARD   = 'คนชรา'
     CRIPPLE     = 'คนพิการ'
 

@@ -14,6 +14,7 @@ const Footer = () => {
   if (pathname === "/oldPeople") return null;
   if (pathname === "/cripple") return null;
   if (pathname === "/pets") return null;
+  if (pathname === "/all") return null;
 
   return (
     <>
