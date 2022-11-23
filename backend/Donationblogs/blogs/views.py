@@ -1,6 +1,7 @@
 from cgitb import lookup
 from math import perm
 from unicodedata import category
+from webbrowser import get
 from winreg import QueryInfoKey
 from django.shortcuts import render
 from rest_framework.response import Response
@@ -29,6 +30,7 @@ class Donation_blogsListView(APIView):
 
         return Response(serializer.data)
 
+@permission_classes((permissions.AllowAny,))
 class Donation_blogsDetailView(APIView):
 
     serializer_class = Donation_blogsSerializer
@@ -53,7 +55,7 @@ class Donation_blogsCategoryUserView(APIView):
     serializer_class = Donation_blogsSerializer
     permission_classes = (permissions.AllowAny, )
 
-    def post(self,request,format=None):
+    def get(self,request,format=None):
 
         data = self.request.data
         category_u = data['category_target']
@@ -69,11 +71,12 @@ class Donation_blogsCategoryObView(APIView):
     serializer_class = Donation_blogsSerializer
     permission_classes = (permissions.AllowAny, )
 
-    def post(self,request,format=None):
+    def get(self,request,format=None):
 
         data = self.request.data
+        print(data)
         category_o = data['category_target']
-
+        
         queryset = Donation_blogs.objects.order_by('-created').filter(category_object= category_o)
 
         serializer = Donation_blogsSerializer(queryset, many=True)
@@ -85,7 +88,7 @@ class Donation_blogsCategory2conView(APIView):
     serializer_class = Donation_blogsSerializer
     permission_classes = (permissions.AllowAny, )
 
-    def post(self,request,format=None):
+    def get(self,request,format=None):
 
         data = self.request.data
         category_o = data['categoryO_target']
@@ -112,11 +115,14 @@ class Donation_blogsWriterView(APIView):
         return Response(serializer.data)
 
 @permission_classes((permissions.AllowAny,))
-class SearchDonationblogView(APIView):
+class SearchDonationblogView(ListAPIView):
 
     queryset = Donation_blogs.objects.all()
     serializer_class = Donation_blogsSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['=category_object']
+    search_fields = ['category_object','name','category_user','write__username']
 
-
+    # '^' Starts-with search.
+    # '=' Exact matches.
+    # '@' Full-text search. (Currently only supported Django's PostgreSQL backend.)
+    # '$' Regex search.

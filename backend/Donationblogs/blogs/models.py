@@ -11,19 +11,19 @@ from django.contrib.auth import get_user_model
 User=get_user_model()
 class Category_Object(models.TextChoices):
     
-    CLOTHES     = 'เสื้อผ้า'
-    SHOSE       = 'รองเท้า'
-    FOODDRUG    = 'อาหารและยา'
-    APPLIANCE   = 'ของใช้'
-    DONATE      = 'เงินบริจาค'
+    CLOTHES     = 'CLOTHES'
+    SHOSE       = 'SHOSE'
+    FOODANDDRUG = 'FOODANDDRUG'
+    DONATION    = 'DONATION'
+    APPLIANCE   = 'APPLIANCE'
 
 class Category_User(models.TextChoices):
     
-    SMALLKID    = 'เด็กเล็ก'
-    KID         = 'เด็กโต'
-    PETS        = 'สัตว์เลี้ยง'
-    GRAYBEARD   = 'คนชรา'
-    CRIPPLE     = 'คนพิการ'
+    KID         = 'KID'
+    TEENAGER    = 'TEENAGER'
+    ADULT       = 'ADULT'
+    GRAYBEARD   = 'GRAYBEARD'
+    CRIPPLE     = 'CRIPPLE'
 
 
 # Create your models here.

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, redirect } from 'react-router-dom';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -16,61 +16,38 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-function Login() {
-  const navigate = useNavigate()
+import { connect } from 'react-redux';
+import { login } from '../actions/auth'
+import CSRFToken from '../components/CSRFToken';
 
+const Login = ({login, isAuthenticated}) => {
+  const navigate = useNavigate()
   const MySwal = withReactContent(Swal)
 
-  const [inputs, setInputs] = useState({});
+  const [formData, setFormData] = useState({
+    username:'',
+    password:''
+  });
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
-  }
+  const { username, password } = formData;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    
-    var raw = JSON.stringify({
-      "username": inputs.username,
-      "password": inputs.password,
-      "expiresIn": 600000
-    });
-    
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-    
-    fetch("https://www.melivecode.com/api/login", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-        if (result.status === 'ok') {
-          MySwal.fire({
-            html: <i>{result.message}</i>,
-            icon: 'success'
-          }).then((value) => {
-            localStorage.setItem('token', result.accessToken)
-            navigate('/profile')
-          })
-        } else {
-          MySwal.fire({
-            html: <i>{result.message}</i>,
-            icon: 'error'
-          })
-        }
+  const onSubmit = e => {
+    e.preventDefault();
+
+    login(username, password);
+
+  };
+
+  if (isAuthenticated) {
+      MySwal.fire({
+        html: <i>Login Success</i>,
+        icon: 'success'
+      }).then((value) => {
+        navigate('/')
       })
-      .catch(error => console.log('error', error));
-
-    console.log(inputs);
-  }
+    }
 
   return (
     <div>
@@ -90,7 +67,8 @@ function Login() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={e => onSubmit(e)} noValidate sx={{ mt: 1 }}>
+            <CSRFToken />
             <TextField
               margin="normal"
               required
@@ -100,8 +78,8 @@ function Login() {
               name="username"
               autoComplete="username"
               autoFocus
-              value={inputs.username || ""} 
-              onChange={handleChange}
+              value={username} 
+              onChange={e => onChange(e)}
             />
             <TextField
               margin="normal"
@@ -112,8 +90,8 @@ function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={inputs.password || ""} 
-              onChange={handleChange}
+              value={password} 
+              onChange={e => onChange(e)}
             />
             <Button
               type="submit"
@@ -121,7 +99,7 @@ function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Login
             </Button>
             <Grid container>
               <Grid item xs>
@@ -139,4 +117,8 @@ function Login() {
   ) 
 } 
 
-export default Login
+const mapStateToPorps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToPorps, { login }) (Login);

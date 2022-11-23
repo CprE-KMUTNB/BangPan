@@ -12,7 +12,7 @@ from django.contrib.auth import get_user_model
 User=get_user_model()
 class GetUserProfileView(APIView):
 
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated,permissions.AllowAny, )
     
     def get(self, request, format=None):
         try:

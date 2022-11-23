@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { connect } from 'react-redux'
+import { register } from '../actions/auth';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -16,9 +18,37 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-function Register() {
-
+function Register({ register }) {
+    //-----------------ทดลอง---------------//
     const navigate = useNavigate()
+
+    const [formData, setFormData] = useState({
+      username: '',
+      password: '',
+      re_password: '',
+    });
+
+    const [accountCreated, setAccountCreated] = useState(false);
+ 
+    const { username, password, re_password } = formData;
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+    const onSubmit = e => {
+      e.preventDefault();
+
+      if (password === re_password) {
+          register(username, password, re_password);
+          setAccountCreated(true);
+      }
+    };
+
+    if (accountCreated)
+      return <navigate to='/' /> ;
+
+    //-----------------ทดลอง---------------//
+
+    {/*
     const MySwal = withReactContent(Swal)
 
     const [inputs, setInputs] = useState({});
@@ -69,7 +99,7 @@ function Register() {
                 }
             })
             .catch(error => console.log('error', error));
-        }
+        }*/}
 
   return (
     <div>
@@ -89,9 +119,9 @@ function Register() {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={e => onSubmit(e)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              {/*<Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
                   name="fname"
@@ -115,7 +145,7 @@ function Register() {
                   value={inputs.lname || ""} 
                   onChange={handleChange}
                 />
-              </Grid>
+              </Grid>*/}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -124,8 +154,8 @@ function Register() {
                   label="Username"
                   name="username"
                   autoComplete="username"
-                  value={inputs.username || ""} 
-                  onChange={handleChange}
+                  value={username} 
+                  onChange={e => onChange(e)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -137,11 +167,23 @@ function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  value={inputs.password || ""} 
-                  onChange={handleChange}
+                  value={password} 
+                  onChange={e => onChange(e)}
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="re_password"
+                  label="re_password"
+                  name="confirm password"
+                  autoComplete="re_password"
+                  value={re_password} 
+                  onChange={e => onChange(e)}
+                />
+              </Grid>
+              {/*<Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -152,19 +194,7 @@ function Register() {
                   value={inputs.email || ""} 
                   onChange={handleChange}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="avatar"
-                  label="Avatar"
-                  name="avatar"
-                  autoComplete="avatar"
-                  value={inputs.avatar || ""} 
-                  onChange={handleChange}
-                />
-              </Grid>
+              </Grid>*/}
             </Grid>
             <Button
               type="submit"
@@ -188,4 +218,4 @@ function Register() {
   )
 }
 
-export default Register
+export default connect(null, { register }) (Register);

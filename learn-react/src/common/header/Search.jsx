@@ -20,14 +20,6 @@ const Search = () => {
             <input type='text' placeholder='ค้นหา...' />
             <span>All Category</span>
           </div>
-
-          <div className='icon f_flex width'>
-            <div className='user'>
-              <Link to='/profile'> {/* มาเปลี่ยน path ด้วย */}
-                <i className='fa fa-user icon-circle'></i>
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
     </>

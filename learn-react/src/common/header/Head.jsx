@@ -1,6 +1,36 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { connect } from 'react-redux';
+import { logout } from '../../actions/auth';
 
-const Head = () => {
+const Head = ({ isAuthenticated, logout }) => {
+    const authLinks = (
+      <Fragment>
+            <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <div className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <a href="/request" className="nav-link px-2 text-white">ขอรับบริจาค</a>
+                <a href="/profile" className="nav-link px-2 text-white me-2">บัญชี</a>
+              </div>
+            </div>
+
+            <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end">
+              <div className="text-right">
+                <a href="/" className="btn btn-outline-danger me-2" role="button" onClick={logout}>Logout</a>
+              </div>
+            </div>
+      </Fragment>
+    );
+
+    const guestLinks = (
+      <Fragment>
+            <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end">
+              <div className="text-right">
+                  <a href="/login" className="btn btn-outline-light me-2" role="button">Login</a>
+                  <a href="/register" className="btn btn-warning" role="button">Sign-up</a>
+              </div>
+            </div>
+      </Fragment>
+    );
+
   return (
     <>
       <header className="p-3 text-bg-info">
@@ -9,13 +39,10 @@ const Head = () => {
 
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="/" className="nav-link px-2 text-secondary">หน้าแรก</a></li>
-              <li><a href="/request" className="nav-link px-2 text-white">ขอรับบริจาค</a></li>
             </ul>
 
-            <div className="text-end">
-              <a href="/login" className="btn btn-outline-light me-2" role="button">Login</a>
-              <a href="/register" className="btn btn-warning" role="button">Sign-up</a>
-            </div>
+            { isAuthenticated ? authLinks : guestLinks }
+
           </div>
         </div>
       </header>
@@ -23,4 +50,8 @@ const Head = () => {
   );
 };
 
-export default Head;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, {logout}) (Head);
