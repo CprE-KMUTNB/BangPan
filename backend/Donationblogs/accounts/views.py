@@ -39,9 +39,9 @@ class SignupView(APIView):
         username        = data['username']
         password        = data['password']
         re_password     = data['re_password']
-        first_name      = data['first_name']
-        last_name       = data['last_name']
-        email           = data['email']
+        # first_name      = data['first_name']
+        # last_name       = data['last_name']
+        # email           = data['email']
 
         try:
             if password == re_password:
@@ -54,7 +54,8 @@ class SignupView(APIView):
                         user = User.objects.create_user(username=username, password=password)
                         Token.objects.create(user=user)
                         user = User.objects.get(id=user.id)
-                        user_profile = UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, phone='',email= email,city='')
+                        # , first_name=first_name, last_name=last_name, phone='',email= email,city=''
+                        user_profile = UserProfile.objects.create(user=user, first_name=' ', last_name=' ', phone=' ',email= ' ',city=' ')
                         user_profile.save()
 
                         return Response({ 'success': 'User created successfully' })
@@ -62,7 +63,6 @@ class SignupView(APIView):
                 return Response({ 'error': 'Passwords do not match' })
         except:
                 return Response({ 'error': 'Something went wrong when registering account' })
-
 
 @method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
@@ -106,20 +106,22 @@ class LogoutView(APIView):
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):
-     permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny, )
 
-     def get(self, request, format=None):
-         return Response({ 'success': 'CSRF cookie set' })
+    def get(self, request, format=None):
+        return Response({ 'success': 'CSRF cookie set' })
 
 
 class DeleteAccountView(APIView):
 
+    permission_classes = (permissions.AllowAny, )
     def delete(self, request, format=None):
         user = self.request.user
 
         try:
+            Token.objects.filter(user=user).delete()
             User.objects.filter(id=user.id).delete()
-
+            
             return Response({ 'success': 'User deleted successfully' })
         except:
             return Response({ 'error': 'Something went wrong when trying to delete user' })

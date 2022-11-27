@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 import { connect } from 'react-redux';
-import { login } from '../actions/auth'
+import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 
 const Login = ({login, isAuthenticated}) => {
@@ -36,18 +36,43 @@ const Login = ({login, isAuthenticated}) => {
   const onSubmit = e => {
     e.preventDefault();
 
-    login(username, password);
-
-  };
-
-  if (isAuthenticated) {
+    login(username, password)
+    console.log(login)
+    if (isAuthenticated) {
       MySwal.fire({
         html: <i>Login Success</i>,
         icon: 'success'
       }).then((value) => {
         navigate('/')
       })
+      console.log(isAuthenticated)
     }
+  else {
+
+    MySwal.fire({
+      html: <i>loading</i>,
+      icon: 'Spin'
+    })
+
+    MySwal.fire({
+      html: <i>Fail</i>,
+      icon: 'error'
+    }).then((value) => {
+      navigate('/login')
+    })
+  }
+  
+  };
+
+  if (isAuthenticated) {
+    MySwal.fire({
+      html: <i>Login Success</i>,
+      icon: 'success'
+    }).then((value) => {
+      navigate('/')
+    })
+    console.log(isAuthenticated)
+  }
 
   return (
     <div>

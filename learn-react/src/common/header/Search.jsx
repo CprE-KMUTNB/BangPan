@@ -15,11 +15,11 @@ const Search = () => {
             <img src={logo} alt='' />
           </div>
 
-          <div className='search-box f_flex'>
+          {/* <div className='search-box f_flex'>
             <i className='fa fa-search'></i>
             <input type='text' placeholder='ค้นหา...' />
             <span>All Category</span>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

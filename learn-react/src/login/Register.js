@@ -5,10 +5,8 @@ import { useNavigate, redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../actions/auth'
 import CSRFToken from '../components/CSRFToken';
-
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,6 +17,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Cookies from 'js-cookie';
+import axios from "axios";
 
 const Register = ({ register, isAuthenticated }) => {
   const navigate = useNavigate()
@@ -38,48 +38,69 @@ const Register = ({ register, isAuthenticated }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-
-    if (password === re_password) {
-        register(username, password, re_password);
-        setAccountCreated(true);
+    console.log(e)
+    console.log(username)
+    if (username === '') {
+        
+        MySwal.fire({
+          html: <i>กรุณากรอกชื่อผู้ใช้</i>,
+          icon: 'error'
+        }).then((value) => {
+          navigate('/register')
+        })
     }
-  };
 
-  if (accountCreated) {
+    else if(password.length < 6){
       MySwal.fire({
-        html: <i>Register Success</i>,
-        icon: 'success'
+        html: <i>รหัสผ่านต้องมากกว่า 5 ตัวอักษร</i>,
+        icon: 'error'
       }).then((value) => {
-        navigate('/login')
+        navigate('/register')
       })
     }
 
-  {/*
-    const navigate = useNavigate()
-    const MySwal = withReactContent(Swal)
+    else if(password !== re_password){
+      MySwal.fire({
+        html: <i>รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน</i>,
+        icon: 'error'
+      }).then((value) => {
+        navigate('/register')
+      }) 
+    }
 
-    const initialFormData = Object.freeze({
-        username: '',
-        password: '',
-        re_password: '',
-    });
+    else if(password === re_password && password.length > 5 && username !== null){
 
-    const [formData, updateFormData] = useState(initialFormData);
+      // register(username, password, re_password);
+      const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': Cookies.get('csrftoken')
+        }
+      };
+      const body = JSON.stringify({ username, password, re_password });
+      console.log(Cookies.get('csrftoken'))
 
-    const handleChange = (e) => {
-        updateFormData({
-          ...formData,
-          [e.target.name]: e.target.value.trim(),
-        });
-    };
+      axios.post(`${process.env.REACT_APP_API_URL}/accounts/register/`, body, config).then(response=>{
+        MySwal.fire({
+          html: <i>สมัครสำเร็จ</i>,
+          icon: 'success'
+        }).then((value) => {
+          navigate('/login')
+        })
+      }).catch(err=>{
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        
-        axiosInstance
-            .post(``)
-    */}
+          MySwal.fire({
+            html: <i>{err.response.data.error}</i>,
+            icon: 'error'
+          }).then((value) => {
+            navigate('/register')
+          })
+
+      })
+    }
+  };
+    
 
   return (
     <div>
@@ -102,31 +123,7 @@ const Register = ({ register, isAuthenticated }) => {
           <Box component="form" noValidate onSubmit={e => onSubmit(e)} sx={{ mt: 3 }}>
             <CSRFToken />
             <Grid container spacing={2}>
-              {/*<Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="fname"
-                  required
-                  fullWidth
-                  id="fname"
-                  label="First Name"
-                  autoFocus
-                  value={inputs.fname || ""} 
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lname"
-                  label="Last Name"
-                  name="lname"
-                  autoComplete="family-name"
-                  value={inputs.lname || ""} 
-                  onChange={handleChange}
-                />
-              </Grid>*/}
+              
               <Grid item xs={12}>
                 <TextField
                   required
@@ -153,18 +150,7 @@ const Register = ({ register, isAuthenticated }) => {
                   onChange={e => onChange(e)}
                 />
               </Grid>
-              {/*<Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={inputs.email || ""} 
-                  onChange={handleChange}
-                />
-            </Grid>*/}
+              
               <Grid item xs={12}>
                 <TextField
                   required

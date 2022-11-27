@@ -10,11 +10,12 @@ import CreateReq from './components/request/CreateReq';
 import SmallC from './components/list/SmallC';
 import Child from './components/list/Child';
 import Cripple from './components/list/Cripple';
-import Pets from './components/list/Pets';
 import Adult from './components/list/Adult';
 import MyRequest from './components/request/MyRequest';
 import AllCate from './components/list/AllCate';
 import Category from './components/list/Category';
+import BlogDetail from './components/list/DonationBlogsDetail';
+import EditRequest from './components/request/EditRequest'
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -34,11 +35,12 @@ function App() {
             <Route path="smallChildren" element={<SmallC/>} />
             <Route path="children" element={<Child />} />
             <Route path="cripple" element={<Cripple />} />
-            <Route path="pets" element={<Pets />} />
             <Route path="oldPeople" element={<Adult />} />
             <Route path="all" element={<AllCate />} />
             <Route path="request/create" element={<CreateReq />} />
-            <Route path="category_object/:id" element={<Category />} />
+            <Route path="request/edit/:id" element={<EditRequest />} />
+            <Route path="categoryO/:category_target" element={<Category />} />
+            <Route path="Donationblogs/:id_target" element={<BlogDetail />} />
           </Routes>
         </Layout>
         <Footer />

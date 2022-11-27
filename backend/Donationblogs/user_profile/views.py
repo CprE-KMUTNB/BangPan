@@ -17,6 +17,7 @@ class GetUserProfileView(APIView):
     def get(self, request, format=None):
         try:
             user = self.request.user
+            print(user)
             username = user.username
 
             user_profile = UserProfile.objects.get(user=user)

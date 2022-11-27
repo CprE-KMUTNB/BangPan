@@ -12,11 +12,13 @@ export const load_user = () => async dispatch => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'X-CSRFToken': Cookies.get('csrftoken')
         }
     };
 
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/profile/user`, config);
+        console.log(res)
 
         if (res.data.error) {
             dispatch({
@@ -25,7 +27,7 @@ export const load_user = () => async dispatch => {
         } else {
             dispatch({
                 type: LOAD_USER_PROFILE_SUCCESS,
-                payload: res.data
+                payload: res.data.profile
             });
         }
     } catch (err) {
@@ -35,7 +37,7 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const update_profile = (first_name, last_name, phone, city) => async dispatch => {
+export const update_profile = (first_name, last_name, phone, city , email) => async dispatch => {
     const config = {
         headers: {
             'Accept': 'application/json',
@@ -49,7 +51,8 @@ export const update_profile = (first_name, last_name, phone, city) => async disp
         first_name, 
         last_name, 
         phone, 
-        city
+        city,
+        email,
     });
 
     try {
@@ -58,7 +61,7 @@ export const update_profile = (first_name, last_name, phone, city) => async disp
         if (res.data.profile && res.data.username) {
             dispatch ({
                 type: UPDATE_USER_PROFILE_SUCCESS,
-                payload: res.data
+                payload: res.data.profile
             });
         } else {
             dispatch ({

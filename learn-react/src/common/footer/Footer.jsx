@@ -6,15 +6,8 @@ const Footer = () => {
 
   const { pathname } = useLocation();
   console.log(pathname);
-  // ทำให้ไม่แสดง footer ในหน้า /request
-  if (pathname === "/request") return null;
-  if (pathname === "/request/create") return null;
-  if (pathname === "/smallChildren") return null;
-  if (pathname === "/children") return null;
-  if (pathname === "/oldPeople") return null;
-  if (pathname === "/cripple") return null;
-  if (pathname === "/pets") return null;
-  if (pathname === "/all") return null;
+
+  if (pathname !== "/") return null;
 
   return (
     <>

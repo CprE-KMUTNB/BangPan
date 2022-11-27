@@ -28,7 +28,7 @@ const Adult = () => {
         const fetchBlogs = async() => {
 
                 try{
-                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/Donationblogs/`);
+                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/Donationblogs/category/?search=คนชรา`);
                     setBlogs(res.data);
                 }
                 catch(err){
@@ -62,9 +62,9 @@ const Adult = () => {
             return list.push(
                 <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div className="col p-4 d-flex flex-column position-static">
-                        <strong className="d-inline-block mb-2 text-primary">{donationblogPost.category}</strong>
-                        <h3 className="mb-0">{donationblogPost.name}</h3>
-                        <div className="mb-1 text-muted">{donationblogPost.created}</div>
+                        <strong className="d-inline-block mb-2 text-primary">{donationblogPost.category_user}</strong>
+                        <h3 className="mb-0">{donationblogPost.name} </h3>
+                        <div className="mb-1 text-muted">{donationblogPost.created.slice(0, 10)}</div>
                         <p className="card-text mb-auto">{donationblogPost.description}</p>
                         <Link to={`/Donationblogs/${donationblogPost.id}`} className="stretched-link">Continue reading</Link>
                     </div>
@@ -101,12 +101,12 @@ const Adult = () => {
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-start">
 
-                    <Link className="p-2 text-muted" to='/category/2'>เสื้อผ้า</Link>
-                    <Link className="p-2 text-muted" to='/category/3'>รองเท้า</Link>
-                    <Link className="p-2 text-muted" to='/category/4'>ของใช้</Link>
-                    <Link className="p-2 text-muted" to='/category/5'>อาหารและยา</Link>
-                    <Link className="p-2 text-muted" to='/category/6'>เงินบริจาค</Link>
-
+                    <Link className="p-2 text-muted" to='../categoryO/คนชรา เสื้อผ้า'>เสื้อผ้า</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/คนชรา รองเท้า'>รองเท้า</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/คนชรา ของใช้'>ของใช้</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/คนชรา อาหารและยา'>อาหารและยา</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/คนชรา เงินบริจาค'>เงินบริจาค</Link>
+                    
                 </nav>
             </div>
             
@@ -118,7 +118,7 @@ const Adult = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดหมู่คนชรา</h1>
+                        <h1 style={{color:'#fff'}}>หมวดคนชรา</h1>
                     </p>
                 </div>
             </div>

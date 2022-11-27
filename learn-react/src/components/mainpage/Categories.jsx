@@ -4,32 +4,27 @@ import { Link } from "react-router-dom";
 const Categories = () => {
     const data = [
         {
-            cateImg:'./images/category/cat1.png',
+            cateImg:'./media/category/cat1.png',
             cateName:'เด็กเล็ก',
             linkTo: '/smallChildren'
         },
         {
-            cateImg:'./images/category/cat2.png',
+            cateImg:'./media/category/cat2.png',
             cateName:'เด็กโต',
             linkTo: '/children'
         },
         {
-            cateImg:'./images/category/cat3.png',
+            cateImg:'./media/category/cat3.png',
             cateName:'คนชรา',
             linkTo: '/oldPeople'
         },
         {
-            cateImg:'./images/category/cat4.png',
+            cateImg:'./media/category/cat4.png',
             cateName:'คนพิการ',
             linkTo: '/cripple'
         },
         {
-            cateImg:'./images/category/cat5.png',
-            cateName:'สัตว์เลี้ยง',
-            linkTo: '/pets'
-        },
-        {
-            cateImg:'./images/category/cat6.png',
+            cateImg:'./media/category/cat6.png',
             cateName:'ทุกหมวดหมู่',
             linkTo: '/all'
         },
