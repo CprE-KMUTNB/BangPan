@@ -1,6 +1,8 @@
 import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import { AiFillCalendar,AiFillAppstore,AiFillEye,AiFillTags
+    ,AiFillCaretRight,AiOutlineAim,AiFillTag} from "react-icons/ai";
 
 const Adult = () => {
 
@@ -77,7 +79,7 @@ const Adult = () => {
 
         for (let i = 0; i < list.length; i += 2) {
             result.push(
-                <div key={i} className='row mb-2'>
+                <div key={i} className='row mb-2 m-2'>
                     <div className='col-md-6'>
                         {list[i]}
                     </div>
@@ -118,7 +120,7 @@ const Adult = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดคนชรา</h1>
+                        <h1 style={{color:'#fff'}}><AiFillTag/>&nbsp;หมวดคนชรา</h1>
                     </p>
                 </div>
             </div>

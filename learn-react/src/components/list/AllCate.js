@@ -2,6 +2,8 @@ import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { Card, Button } from 'react-bootstrap'
+import { AiFillCalendar,AiFillAppstore,AiFillEye,AiFillTags
+    ,AiFillCaretRight,AiOutlineAim,AiFillTag} from "react-icons/ai";
 
 const AllCate = () => {
 
@@ -101,7 +103,7 @@ const AllCate = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>ทุกหมวดหมู่</h1>
+                        <h1 style={{color:'#fff'}}><AiFillTag/>&nbsp;ทุกหมวดหมู่</h1>
                     </p>
                 </div>
             </div>

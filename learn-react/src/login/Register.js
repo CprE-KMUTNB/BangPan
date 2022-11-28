@@ -91,7 +91,7 @@ const Register = ({ register, isAuthenticated }) => {
       }).catch(err=>{
 
           MySwal.fire({
-            html: <i>{err.response.data.error}</i>,
+            html: <i>Username นี้มีถูกใช้งานแล้ว</i>,
             icon: 'error'
           }).then((value) => {
             navigate('/register')

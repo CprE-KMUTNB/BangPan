@@ -77,7 +77,7 @@ const Cripple = () => {
 
         for (let i = 0; i < list.length; i += 2) {
             result.push(
-                <div key={i} className='row mb-2'>
+                <div key={i} className='row mb-2 m-2'>
                     <div className='col-md-6'>
                         {list[i]}
                     </div>

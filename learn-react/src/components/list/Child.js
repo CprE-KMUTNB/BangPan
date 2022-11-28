@@ -1,7 +1,8 @@
 import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
-
+import { AiFillCalendar,AiFillAppstore,AiFillEye,AiFillTags
+    ,AiFillCaretRight,AiOutlineAim,AiFillTag} from "react-icons/ai";
 const Child = () => {
 
     const [donationblogs, setBlogs] = useState([]);
@@ -60,7 +61,7 @@ const Child = () => {
 
         donationblogs.map(donationblogPost => {
             return list.push(
-                <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-150 position-relative">
                     <div className="col p-4 d-flex flex-column position-static">
                         <strong className="d-inline-block mb-2 text-primary">{donationblogPost.category_user}</strong>
                         <h3 className="mb-0">{donationblogPost.name} </h3>
@@ -77,7 +78,7 @@ const Child = () => {
 
         for (let i = 0; i < list.length; i += 2) {
             result.push(
-                <div key={i} className='row mb-2'>
+                <div key={i} className='row mb-2  m-2'>
                     <div className='col-md-6'>
                         {list[i]}
                     </div>
@@ -97,7 +98,6 @@ const Child = () => {
         
         <div className='container mt-3'>
             
-
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-start">
 
@@ -118,7 +118,7 @@ const Child = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดหมู่เด็กโต</h1>
+                        <h1 style={{color:'#fff'}}><AiFillTag/>&nbsp;หมวดหมู่เด็กโต</h1>
                     </p>
                 </div>
             </div>

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link,useParams } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
+import { AiFillCalendar,AiFillAppstore,AiFillEye,AiFillTags
+,AiFillCaretRight,AiOutlineAim,AiOutlineUser} from "react-icons/ai";
 import { Typography } from 'antd';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -37,7 +38,7 @@ const BlogDetail = (props) => {
           },[])
 
     const createBlog = () => {
-        return {__html: blog.description}
+        return {__html: "<b>รายละเอียดคำขอรับบริจาค : </b>" + blog.description}
     };
 
     const MySwal = withReactContent(Swal)
@@ -60,12 +61,18 @@ const BlogDetail = (props) => {
 
             <div className='container mt-3'>
                 <h1 className='display-2'>{blog.name}</h1>
-                <h2 className='text-muted mt-3'>หมวดหมู่ : - {blog.category_object} - {blog.category_user}</h2>
-                <h4>สร้างคำขอเมื่อ : {String(blog.created).slice(0, 10)}</h4>
+                <hr />
+                <h2 className='text-muted mt-3'><AiFillTags/>หมวดหมู่ : - {blog.category_object} - {blog.category_user}</h2>
+                <h6><AiFillCalendar/> <b>สร้างคำขอเมื่อ :</b> {String(blog.created).slice(0, 10)}  &nbsp; &nbsp; <AiFillEye/><b>ยอดเข้าชม : </b>{blog.views}
+                &nbsp; &nbsp; <AiOutlineUser/> <b>จำนวนที่รับบริจาค : </b> {blog.Amount_requested}
+                </h6>
+                {/* <b>ผู้เขียนคำขอรับบริจาค : </b>{blog.write.username}&nbsp; &nbsp; */}
                 <div className="col-auto d-none d-lg-block">
                     <img width='200' height='250' src={`${process.env.REACT_APP_API_URL}/${blog.image}`} alt='image' />
                 </div>
                 <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
+                <p><AiOutlineAim/>&nbsp;<b>เหตุผลที่ขอรับบริจาค</b> : {blog.reason}</p>
+                <p><AiOutlineAim/>&nbsp;<b>สถานที่รับบริจาค</b> : {blog.location}</p>
                 <hr />
                 <p className='lead mb-5'><Link to='/' className='font-weight-bold'>ย้อนกลับ</Link></p>
 

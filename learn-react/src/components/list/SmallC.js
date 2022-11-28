@@ -2,7 +2,8 @@ import React, { useState, useEffect }from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { Card, Button } from 'react-bootstrap'
-
+import { AiFillCalendar,AiFillAppstore,AiFillEye,AiFillTags
+    ,AiFillCaretRight,AiOutlineAim,AiFillTag} from "react-icons/ai";
 const SmallC = () => {
 
     const [donationblogs, setBlogs] = useState([]);
@@ -29,7 +30,7 @@ const SmallC = () => {
         const fetchBlogs = async() => {
 
                 try{
-                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/Donationblogs/category/?search=เด็ก`);
+                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/Donationblogs/category/?search=เด็กเล็ก`);
                     setBlogs(res.data);
                 }
                 catch(err){
@@ -61,7 +62,7 @@ const SmallC = () => {
 
         donationblogs.map(donationblogPost => {
             return list.push(
-                <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="row no-gutters border rounded overflow-hidden flex-md-row ml-3 mb-4 shadow-sm h-md-250 position-relative">
                     <div className="col p-4 d-flex flex-column position-static">
                         <strong className="d-inline-block mb-2 text-primary">{donationblogPost.category_user}</strong>
                         <h3 className="mb-0">{donationblogPost.name} </h3>
@@ -78,7 +79,7 @@ const SmallC = () => {
 
         for (let i = 0; i < list.length; i += 2) {
             result.push(
-                <div key={i} className='row mb-2'>
+                <div key={i} className='row mb-2 m-2'>
                     <div className='col-md-6'>
                         {list[i]}
                     </div>
@@ -102,11 +103,11 @@ const SmallC = () => {
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-start">
 
-                    <Link className="p-2 text-muted" to='../categoryO/เด็ก เสื้อผ้า'>เสื้อผ้า</Link>
-                    <Link className="p-2 text-muted" to='../categoryO/เด็ก รองเท้า'>รองเท้า</Link>
-                    <Link className="p-2 text-muted" to='../categoryO/เด็ก ของใช้'>ของใช้</Link>
-                    <Link className="p-2 text-muted" to='../categoryO/เด็ก อาหารและยา'>อาหารและยา</Link>
-                    <Link className="p-2 text-muted" to='../categoryO/เด็ก เงินบริจาค'>เงินบริจาค</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/เด็กเล็ก เสื้อผ้า'>เสื้อผ้า</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/เด็กเล็ก รองเท้า'>รองเท้า</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/เด็กเล็ก ของใช้'>ของใช้</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/เด็กเล็ก อาหารและยา'>อาหารและยา</Link>
+                    <Link className="p-2 text-muted" to='../categoryO/เด็กเล็ก เงินบริจาค'>เงินบริจาค</Link>
                     
                 </nav>
             </div>
@@ -119,7 +120,7 @@ const SmallC = () => {
                         {/*<Link to={`/Donationblogs/${donationfeaturedBlog.slug}`} className="text-white font-weight-bold">
                             Continue reading...
                         </Link>*/}
-                        <h1 style={{color:'#fff'}}>หมวดหมู่เด็ก</h1>
+                        <h1 style={{color:'#fff'}}><AiFillTag/>&nbsp;หมวดหมู่เด็กเล็ก</h1>
                     </p>
                 </div>
             </div>
