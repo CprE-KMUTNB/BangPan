@@ -46,10 +46,10 @@ class SignupView(APIView):
         try:
             if password == re_password:
                 if User.objects.filter(username=username).exists():
-                    return Response({ 'error': 'Username already exists' })
+                    return Response({ 'error': 'Username already exists' }, status=status.HTTP_400_BAD_REQUEST)
                 else:
                     if len(password) < 6:
-                        return Response({ 'error': 'Password must be at least 6 characters' })
+                        return Response({ 'error': 'Password must be at least 6 characters' }, status=status.HTTP_400_BAD_REQUEST)
                     else:
                         user = User.objects.create_user(username=username, password=password)
                         Token.objects.create(user=user)
@@ -60,9 +60,9 @@ class SignupView(APIView):
 
                         return Response({ 'success': 'User created successfully' })
             else:
-                return Response({ 'error': 'Passwords do not match' })
+                return Response({ 'error': 'Passwords do not match' }, status=status.HTTP_400_BAD_REQUEST)
         except:
-                return Response({ 'error': 'Something went wrong when registering account' })
+                return Response({ 'error': 'Something went wrong when registering account' }, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
